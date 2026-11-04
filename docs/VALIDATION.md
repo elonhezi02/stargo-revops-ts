@@ -12,3 +12,5 @@ New TypeScript implementation, tested on macOS Apple Silicon with Node 24.12.0. 
 - Known non-blocking tool warnings: Node's built-in SQLite experimental status; upstream Zod pure-comment warnings from Vite; Playwright color environment warning. All relevant checks completed successfully despite these warnings.
 
 Limits: no exhaustive security audit, universal prompt-injection detector, general semantic claim checker, broad model accuracy benchmark or production-scale concurrency test. Candidate personal review and first-person PROCESS.md remain to be completed.
+
+Clean archive verification also passed: extracted the review ZIP into a fresh temporary directory, ran npm ci and the full npm check command, generated KPI_PACK.md, then verified the production static page and 6/4/3/2 baseline through the Express API. The archive includes `.git/HEAD` and excludes node_modules, runtime data and `.env`. Source files compare byte-for-byte with the original pack.
