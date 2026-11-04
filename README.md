@@ -154,6 +154,6 @@ No optional HubSpot sync, email integration, authentication, deployment or uploa
 ## Submission
 
 - `KPI_PACK.md` is generated from stored decisions, with a CRO note under 150 words.
-- `PROCESS.md` is a candidate worksheet and must be completed in the candidate's own first person, with honest personal hours. `docs/AI_LOG.md` records actual assistant activity.
+- `PROCESS.md` is a candidate process draft and must be completed in the candidate's own first person, with honest personal hours. `docs/AI_LOG.md` records actual assistant activity.
 - Commit reviewed work, then `npm run package` creates `../stargo-revops-ts-review.zip` including `.git` and excluding ignored runtime data, models, dependencies and `.env`.
 - Nothing is sent or published automatically. Reply to the original assignment email only after final review, with repository/archive, total personal hours and the model actually used. The source brief's deadline and no-undisclosed-post-submission-changes rule still apply.

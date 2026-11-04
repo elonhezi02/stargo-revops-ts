@@ -11,6 +11,6 @@ Documentation status: **4 November 2026**. Project chronology: [TIMELINE.md](TIM
 | 5. Storage | atomic SQLite document plus revision; persist all state | restart and conflict tests |
 | 6. UI | React + TypeScript, queue/detail, decisions, report and visibility, 390 px | Playwright + visual inspection |
 | Offline mode | rules-only analysis and explicitly labelled brief template | no-key baseline tests |
-| Deliverables | Git, README, generated KPI pack, PROCESS worksheet and AI activity log | review archive includes Git; candidate personal process still pending |
+| Deliverables | Git, README, generated KPI pack, PROCESS draft and AI activity log | review archive includes Git; candidate personal process still pending |
 
 Optional HubSpot sync and labelled evaluation benchmark are not implemented. See README for prioritization, assumptions and limitations.

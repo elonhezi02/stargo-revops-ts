@@ -15,7 +15,7 @@ This timeline covers this repository's new build. Completed work is recorded bel
 | 3 | Core implementation | Shared contracts, identity, validated extraction, qualification, historical reporting, persistence and API implemented. |
 | 4 | User interface | Lead queue/detail, decisions, KPI drilldown and AI visibility implemented. |
 | 5 | Verification and corrections | 39 offline tests, TypeScript/build/format checks, two browser tests and local Qwen3 smoke test passed. See VALIDATION.md. |
-| 6 | Review materials | README, PROCESS worksheet, requirements map, generated KPI pack and review archive prepared. |
+| 6 | Review materials | README, PROCESS draft, requirements map, generated KPI pack and review archive prepared. |
 | 7 | Clean-install verification | Review archive extracted to a fresh directory; installation, checks and static/API baseline verified. |
 
 The implementation was assisted by Codex; actual assistant activity is recorded in AI_LOG.md. Candidate-authored reflections and personal hours are pending in PROCESS.md.

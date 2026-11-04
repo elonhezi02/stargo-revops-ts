@@ -1,35 +1,44 @@
-# Candidate process — personal completion required
+# Engineering process
 
-This is a worksheet, not a finished personal testimony. This separate TypeScript build started on 4 November 2026 after the candidate requested a fresh implementation with technologies matching the earlier Mail Risk Intelligence project. Codex generated implementation and documentation with the candidate's authorization. Original source files were reused; the previous Python project was left intact.
+Editorial draft prepared with AI assistance for my review and revision. Personal review notes and time reporting remain to be completed before submission.
 
-## Timeline for my account
+## Direction and technology selection
 
-Start of this repository’s build: **4 November 2026**. See [docs/TIMELINE.md](docs/TIMELINE.md) for completed assistant work and upcoming personal review. Add actual dates for your own review and submission when they occur; do not present planned work as completed.
+I chose to use a consistent technology stack across my Stargo assignments: TypeScript, React, Express, Zod and SQLite. Before committing to that direction, I asked Codex to compare the existing implementations with the assignment's permitted technologies and present a plan for my approval. I approved the TypeScript approach after that comparison.
 
-## My plan and technology choice
+I then requested a separate implementation and repository rather than modifying the existing project. This repository's build started on 4 November 2026. The original assignment pack supplies the requirements and synthetic data; its October reporting dates are independent of the development timeline.
 
-Write in your own words why you chose Node.js/TypeScript, Express, React, Zod and SQLite, and why qualification and event-time reporting received priority.
+## How I used AI
 
-## My actual prompts and interventions
+I worked with Codex as an implementation collaborator. I set the technology-consistency requirement, requested the comparison and plan before changes, approved the direction, and defined the separate-project boundary. Codex generated the application code and supporting tests, ran the automated checks, and prepared documentation drafts. I requested explanations of the architecture, local execution and requirement coverage throughout the work.
 
-Prompts for this build included:
+My instructions evolved through three concrete decisions. The following are summaries of the requests, not verbatim quotations:
 
-- “בוא נעשה את ההתאמה הזאת כדי לשמור על האחידות”
-- “אני רוצה שהכל יהיה חדש- לא ביקשתי לזייף ביקשתי בניה מחדש של הכל מהיום ואילך! אז תעשה את זה בבקשה”
+- Compare the previous project's stack with the assignment constraints before proposing changes.
+- Use the approved TypeScript stack in an independent implementation with its own documentation and Git repository.
+- Complete the technical validation and prepare the application for a final review together.
 
-Describe which decisions you made, which work you delegated and which output you personally checked. Do not describe assistant fixes or tests as your own actions. The factual agent log is in `docs/AI_LOG.md`.
+This division let me control the scope and technology choices while using AI for implementation and verification. The implementation activity and observed results are recorded in [docs/AI_LOG.md](docs/AI_LOG.md) and [docs/VALIDATION.md](docs/VALIDATION.md).
 
-## What I verified myself
+## Technical decisions to review
 
-To complete after personal review: run the README, trace two KPI counts to record IDs, test a past/current decision, inspect the five QL gates, and explain the safe failure and constrained-content choices. Record what you actually observed and any changes you requested.
+The implementation separates extraction from qualification. Agent A returns structured, evidence-linked facts; Agent B applies explicit qualification, exclusion and routing rules. A high priority score cannot replace recorded sales acceptance or override missing evidence.
 
-## Time and tools
+The historical report uses event-time boundaries in Asia/Jerusalem and preserves earlier analyses when a lead is reanalyzed. This keeps current work from silently rewriting a past week's results. Missing feeds remain unknown, and expansion is reported separately.
 
-- Personal hours: **candidate to supply**.
-- Coding assistant: **Codex**.
-- Application provider: **local Ollama**; selected model **qwen3:4b-instruct**.
-- Personal live-model verification: **candidate to complete** (assistant results are separately recorded).
+Content generation is deliberately constrained: the model selects approved claims and a content structure, while factual sentences come from a source-tagged catalog. The tradeoff is reduced flexibility in exchange for traceable claims.
 
-## What I would improve
+## Verification and review
 
-Write your own assessment of tradeoffs and limitations. Prepare to explain and change the code in the required live session without AI assistance.
+The completed assistant-run checks include 39 offline tests, two browser flows, a clean archive installation and a local Ollama smoke test. The live test used `qwen3:4b-instruct` and covered positive and negative interest, safe review routing and a grounded content brief. These results describe what was exercised, not a claim of exhaustive correctness.
+
+My final hands-on review of this TypeScript version is pending. Before submission I will replace this paragraph with my observations from tracing two KPI counts, testing past/current sales decisions, checking persistence, and reviewing the qualification and model-failure paths. I will also record any corrections I request or implement during that review.
+
+## Time and next steps
+
+- Personal time spent: **to be completed from my actual time records**.
+- Development assistant: **Codex**.
+- Application model exercised in the build: **qwen3:4b-instruct via local Ollama**.
+- Final personal review and code walkthrough: **pending**.
+
+After the review, I will revise this account in my own words and complete the time report. The remaining technical limitations are documented in the README, particularly conservative language coverage, constrained content generation and the small-workspace storage design.
