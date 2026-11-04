@@ -1,5 +1,7 @@
 # Validation — 4 November 2026
 
+Documentation status: **4 November 2026**. Project chronology: [TIMELINE.md](TIMELINE.md).
+
 New TypeScript implementation, tested on macOS Apple Silicon with Node 24.12.0. Only synthetic data was used.
 
 - **39 Vitest/Supertest tests passed**: QL gate, owner/size boundaries, identity matching and conflicting identifiers, first touch, timezone boundaries, duplicate accepts, historical reject/current accept, evidence timing, earlier cohorts, unknown feeds, suppression, exact evidence, unsafe input, local-model HTTP failures, persistence, atomic revision conflicts, blank inputs and look-alike brands.

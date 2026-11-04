@@ -2,6 +2,10 @@
 
 A new local RevOps application implemented in TypeScript on 4 November 2026. React + Vite, Express, Zod and Node's SQLite driver. Original assignment data is synthetic. No authentication, external CRM connection or outbound messaging.
 
+## Project timeline
+
+This repository’s build started on **4 November 2026**. [docs/TIMELINE.md](docs/TIMELINE.md) separates completed work from the next review and submission steps. The October dates in the data and KPI pack are the assignment’s reporting scenario.
+
 ## Run with no model and no key
 
 Requires **Node.js 24.12+** and npm. The lockfile records the tested dependencies. From this repository:

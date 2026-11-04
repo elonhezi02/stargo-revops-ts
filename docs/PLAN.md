@@ -2,6 +2,8 @@
 
 This is a new TypeScript implementation in a separate repository. Only the original assignment pack was copied into source/. The earlier Python project remains unchanged. The technology choice follows the candidate's earlier Mail Risk Intelligence project: React, Express, Zod, SQLite, Vitest and Playwright.
 
+Status on 4 November 2026: implementation stages below are complete; personal review and submission are pending. The execution record and next steps are in [TIMELINE.md](TIMELINE.md).
+
 1. Define shared contracts and deterministic identity, qualification and event-time reporting.
 2. Implement validated extraction with a labelled offline fallback and bounded local Ollama calls; grounded content plans.
 3. Add transactional SQLite persistence and a local Express API.

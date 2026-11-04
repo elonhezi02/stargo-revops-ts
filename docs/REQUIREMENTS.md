@@ -1,5 +1,7 @@
 # Requirement mapping
 
+Documentation status: **4 November 2026**. Project chronology: [TIMELINE.md](TIMELINE.md).
+
 | Brief section | Implementation | Verification |
 |---|---|---|
 | 1. Ingest/hygiene | source import, Zod input, tldts domains, email/LinkedIn identity, paste form | core identity/blank/source tests; API mutation; browser form |

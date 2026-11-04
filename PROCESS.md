@@ -2,6 +2,10 @@
 
 This is a worksheet, not a finished personal testimony. This separate TypeScript build started on 4 November 2026 after the candidate requested a fresh implementation with technologies matching the earlier Mail Risk Intelligence project. Codex generated implementation and documentation with the candidate's authorization. Original source files were reused; the previous Python project was left intact.
 
+## Timeline for my account
+
+Start of this repository’s build: **4 November 2026**. See [docs/TIMELINE.md](docs/TIMELINE.md) for completed assistant work and upcoming personal review. Add actual dates for your own review and submission when they occur; do not present planned work as completed.
+
 ## My plan and technology choice
 
 Write in your own words why you chose Node.js/TypeScript, Express, React, Zod and SQLite, and why qualification and event-time reporting received priority.
