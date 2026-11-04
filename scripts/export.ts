@@ -1,0 +1,12 @@
+import { writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { Store } from "../server/storage.js";
+import { config, ROOT } from "../server/config.js";
+import { report, markdown } from "../server/reporting.js";
+import { visibility } from "../server/visibility.js";
+const store = new Store(config().database);
+await store.initialize();
+const pack = report(store.read());
+writeFileSync(join(ROOT, "KPI_PACK.md"), markdown(pack, visibility()[0]));
+store.close();
+console.log("Exported KPI_PACK.md from stored decisions.");
