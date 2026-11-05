@@ -1,6 +1,6 @@
 # Engineering process
 
-Editorial draft prepared with AI assistance for my review and revision. Personal review notes and time reporting remain to be completed before submission.
+AI-assisted editorial draft, updated 5 November 2026. Final personal review notes and time reporting remain open.
 
 ## Direction and technology selection
 
@@ -20,7 +20,7 @@ My instructions evolved through three concrete decisions. The following are summ
 
 This division let me control the scope and technology choices while using AI for implementation and verification. The implementation activity and observed results are recorded in [docs/AI_LOG.md](docs/AI_LOG.md) and [docs/VALIDATION.md](docs/VALIDATION.md).
 
-## Technical decisions to review
+## Design rationale
 
 The implementation separates extraction from qualification. Agent A returns structured, evidence-linked facts; Agent B applies explicit qualification, exclusion and routing rules. A high priority score cannot replace recorded sales acceptance or override missing evidence.
 
@@ -32,13 +32,15 @@ Content generation is deliberately constrained: the model selects approved claim
 
 The completed assistant-run checks include 39 offline tests, two browser flows, a clean archive installation and a local Ollama smoke test. The live test used `qwen3:4b-instruct` and covered positive and negative interest, safe review routing and a grounded content brief. These results describe what was exercised, not a claim of exhaustive correctness.
 
-My final hands-on review of this TypeScript version is pending. Before submission I will replace this paragraph with my observations from tracing two KPI counts, testing past/current sales decisions, checking persistence, and reviewing the qualification and model-failure paths. I will also record any corrections I request or implement during that review.
+On 5 November, I requested clarification of the built-client and development run modes before continuing the review. I also requested a documentation audit against the brief, with a plan presented before edits.
+
+The functional review is in progress. My final account will record observations from tracing two KPI counts, testing historical and current sales decisions, checking restart persistence, and inspecting qualification and failure handling. Any corrections resulting from that review will be recorded here.
 
 ## Time and next steps
 
 - Personal time spent: **to be completed from my actual time records**.
 - Development assistant: **Codex**.
 - Application model exercised in the build: **qwen3:4b-instruct via local Ollama**.
-- Final personal review and code walkthrough: **pending**.
+- Final personal review and code walkthrough: **in progress**.
 
 After the review, I will revise this account in my own words and complete the time report. The remaining technical limitations are documented in the README, particularly conservative language coverage, constrained content generation and the small-workspace storage design.

@@ -1,21 +1,40 @@
-# Factual assistant activity — 4 November 2026
+# AI-assisted development record
 
-Documentation status: **4 November 2026**. Project chronology: [TIMELINE.md](TIMELINE.md).
+Build date: 4 November 2026. Last documentation update: 5 November 2026.
 
-This file is written by the assistant, not the candidate's personal account.
+This supporting record describes Codex activity. The candidate's decisions, personal review and time report belong in [PROCESS.md](../PROCESS.md).
 
-The user requested a new, separate implementation matching the earlier project's technology stack. Created `stargo-revops-ts` with a new Git repository and copied only the original assignment pack into source/. Implemented fresh TypeScript contracts, identity, extraction, qualification, reporting, persistence and Express routes, plus a new React interface. Existing projects were not edited.
+## Direction and scope
 
-Used Zod for runtime schemas and shared types, node:sqlite for durable state, Vitest/Supertest for backend checks and Playwright for browser flows. The first TypeScript check caught an owner field type intersection (contact owner versus nullable routed owner); corrected it. The initial browser run lacked the installed Playwright Chromium version; installed that runtime and reran. Prettier initially needed a second formatting pass on two files.
+The candidate requested a technology comparison against the assignment constraints, approved a TypeScript stack consistent with the earlier Mail Risk Intelligence project, and requested an independent implementation. The new repository uses the original assignment pack; existing application projects were left unchanged.
 
-The independent seed report computed 6/4/3/2 with record-level traces. Tested a local Ollama service using the already-downloaded qwen3:4b-instruct model from the earlier project's model cache. Synthetic live cases covered positive and negative interest, instructions, unsupported language and content generation. This used external runtime assets for testing, not copied application code or a bundled model dependency.
+The actual instructions were to compare technologies before proposing changes, implement the approved stack in a separate project, and complete technical validation before final review. These are summaries of the conversation, not verbatim quotations.
 
-Prepared README, review steps, generated KPI pack and packaging helpers. PROCESS.md is a process draft for candidate review; personal review notes and time reporting are pending. No subagents used. No email sent, repository pushed or site deployed.
+## Implementation work
 
-The assistant visually inspected desktop/mobile screenshots and corrected a search-field layout and a holiday-brand detection pattern. Added explicit blank-input handling and corresponding regression tests. A repeated browser test initially selected a lead from the previous test database; changed the test to use a fresh database per run and the exact new lead name. The final offline suite has 39 tests, and the two browser flows passed again. See VALIDATION.md for measured results rather than inferring broader coverage.
+Codex generated shared Zod contracts; identity normalization; evidence-validated extraction; deterministic qualification and routing; event-time reporting; SQLite persistence; Express routes; and the React review interface. It also prepared automated tests, local-model helpers, KPI export, packaging and documentation drafts.
 
-Finally extracted the review archive into a fresh directory, installed dependencies from the lockfile, ran the full checks and verified the static UI/API baseline. Started the new application's offline preview on port 3002. The source pack was checked byte-for-byte against the original. Prepared a local review archive; no submission occurred.
+The candidate directed scope and technology decisions. Implementation fixes and automated verification described below were carried out by Codex.
 
-At the user’s request, organized the repository documentation around the actual new-build start date, 4 November 2026, and added TIMELINE.md separating completed stages from planned personal review and submission. Assignment data timestamps and Git history were preserved.
+## Findings and corrections
 
-Documentation edit: at the candidate’s request, replaced informal conversation excerpts in PROCESS.md with professional summaries of the actual direction, approval and project-scope decisions. The document remains an AI-assisted editorial draft for personal revision; automated verification is distinguished from the pending candidate review.
+| Finding                                                                              | Correction                                                         | Verification             |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------ |
+| Contact ownership and nullable routing ownership produced a TypeScript type conflict | Separated the client lead type from the stored contact-owner field | TypeScript compilation   |
+| Missing browser runtime prevented the initial Playwright launch                      | Installed the required Chromium runtime                            | Browser tests rerun      |
+| Search-field layout needed correction                                                | Adjusted the field's flex direction                                | Screenshot inspection    |
+| Holiday-brand references could be mistaken for Stargo mentions                       | Extended the look-alike detection pattern                          | Targeted regression test |
+| Blank identity/source fields needed explicit normalization                           | Accepted blank values as missing data                              | Intake regression test   |
+| Repeated browser runs selected an earlier test contact                               | Used a fresh test database and exact contact selector              | Both browser flows rerun |
+
+## Verification evidence
+
+The completed 4 November run included 39 offline tests, TypeScript/build/format checks, two browser workflows, visual screenshot inspection and clean archive installation. The seed report computed 6/4/3/2 with supporting record IDs.
+
+A local Ollama run used the already-downloaded `qwen3:4b-instruct` model. Positive and negative interest and content generation exercised real inference. Obvious instructions and unsupported Arabic were routed to review before inference. The test database was disposable. Full outcomes and limits are in [VALIDATION.md](VALIDATION.md).
+
+## Documentation review — 5 November 2026
+
+At the candidate's request, the documentation was audited against the supplied brief. The review guide was rewritten in English, local run modes were clarified, document responsibilities were separated, and links and status dates were checked. Original source files and the generated reporting scenario were preserved.
+
+No candidate hours have been supplied. The final personal review remains in progress. No submission email, repository push or deployment was performed as part of this work.

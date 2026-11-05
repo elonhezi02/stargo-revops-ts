@@ -1,14 +1,28 @@
-# Build plan — 4 November 2026
+# Implementation plan
 
-This is a new TypeScript implementation in a separate repository. Only the original assignment pack was copied into source/. The earlier Python project remains unchanged. The technology choice follows the candidate's earlier Mail Risk Intelligence project: React, Express, Zod, SQLite, Vitest and Playwright.
+Established 4 November 2026; status reviewed 5 November 2026.
 
-Status on 4 November 2026: implementation stages below are complete; personal review and submission are pending. The execution record and next steps are in [TIMELINE.md](TIMELINE.md).
+## Objective
 
-1. Define shared contracts and deterministic identity, qualification and event-time reporting.
-2. Implement validated extraction with a labelled offline fallback and bounded local Ollama calls; grounded content plans.
-3. Add transactional SQLite persistence and a local Express API.
-4. Build lead queue/detail, weekly record drilldowns and AI visibility views.
-5. Test unseen inputs, failures, historical decisions, restart persistence and browser flows; verify local-model behavior separately.
-6. Export the KPI pack and document setup, tradeoffs, actual AI assistance and remaining candidate-authored sections.
+Build a local application that turns inbound GTM signals into qualified, routed leads, a traceable weekly KPI report and prioritized AI-visibility gaps. Prioritize correctness of intake, qualification and reporting before presentation and optional integrations.
 
-Acceptance: synthetic baseline is independently computed from supplied records; every counted event is traceable; unknown feed is never zero; score never bypasses five-condition QL gate. Tests and setup must work without a model or key. No outbound messaging, auth, integrations or deployment.
+## Technical approach
+
+Use TypeScript across Express and React, Zod for shared contracts, SQLite for persistent state and Ollama for local inference. This matches the candidate's established stack and the assignment's permitted technologies. A labelled rules mode allows a complete no-key review.
+
+| Stage                  | Scope                                                                   | Acceptance criterion                                                       | Status                 |
+| ---------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------- |
+| Contracts and identity | Input schemas, email/LinkedIn matching, domain normalization            | Invalid input is rejected; identity conflicts do not merge people          | Implemented and tested |
+| Qualification          | Evidence extraction, five-condition gate, exclusions, score and routing | Every check is inspectable; score cannot override acceptance or exclusions | Implemented and tested |
+| Reporting              | Jerusalem window, first touch, event counts and expansion               | Counts reconcile to records; missing feeds remain unknown                  | Implemented and tested |
+| Persistence and API    | Seed import, atomic writes, decisions and analysis versions             | Restart preserves state; conflicting writes cannot silently overwrite it   | Implemented and tested |
+| UI and visibility      | Lead review, metric drilldown, gap ranking and grounded content         | Core workflows work at 390 px; unsupported content is blocked              | Implemented and tested |
+| Delivery review        | Personal walkthrough, process account and final archive                 | Candidate verifies the result and records actual time and observations     | In progress            |
+
+## Scope decisions
+
+The required seed and paste workflows take precedence over file uploads or external integrations. Qualification is deterministic; the model extracts facts and selects a constrained content plan. SQLite stores a versioned workspace document, appropriate for the supplied dataset and a local review tool.
+
+Optional HubSpot sync and a broad labelled model benchmark are omitted. Further work would focus on extraction coverage, asynchronous model jobs and explicit identity-resolution workflows. Detailed assumptions and formulas are in the [README](../README.md).
+
+The [timeline](TIMELINE.md) records actual milestones. The [requirement map](REQUIREMENTS.md) links scope to implementation and verification.

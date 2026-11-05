@@ -1,10 +1,16 @@
 # Stargo · Revenue workspace
 
-A new local RevOps application implemented in TypeScript on 4 November 2026. React + Vite, Express, Zod and Node's SQLite driver. Original assignment data is synthetic. No authentication, external CRM connection or outbound messaging.
+A local RevOps application for evidence-based lead qualification, traceable weekly reporting and AI-visibility analysis. Built with React, TypeScript, Express, Zod and SQLite. The supplied data is synthetic; the application does not connect to CRM, email or social accounts.
 
-## Project timeline
+## Documentation
 
-This repository’s build started on **4 November 2026**. [docs/TIMELINE.md](docs/TIMELINE.md) separates completed work from the next review and submission steps. The October dates in the data and KPI pack are the assignment’s reporting scenario.
+- [Review guide](docs/REVIEW.md): practical walkthrough and expected outcomes.
+- [Requirement coverage](docs/REQUIREMENTS.md): implementation and verification against the brief.
+- [Validation record](docs/VALIDATION.md): executed checks and their limits.
+- [Engineering process](PROCESS.md): candidate decisions and personal review draft.
+- [Implementation plan](docs/PLAN.md), [timeline](docs/TIMELINE.md) and [AI activity record](docs/AI_LOG.md): supporting development records.
+
+This implementation began on 4 November 2026. Documentation was reviewed on 5 November. October timestamps belong to the assignment’s reporting scenario.
 
 ## Run with no model and no key
 
@@ -24,7 +30,16 @@ For development:
 npm run dev
 ```
 
-Open **http://127.0.0.1:5174**. Vite proxies `/api` to the Express server on 3002. Both bind to loopback. Production Express serves the built client and API together.
+Open **http://127.0.0.1:5174**. Vite proxies `/api` to the Express server on 3002. Both bind to loopback. In built-client mode, Express serves the client and API together.
+
+### Choosing a run mode
+
+| Command       | Browser address       | Code changes                                                        |
+| ------------- | --------------------- | ------------------------------------------------------------------- |
+| `npm start`   | http://127.0.0.1:3002 | Rebuild changed client code and refresh; restart for server changes |
+| `npm run dev` | http://127.0.0.1:5174 | Vite updates the client; tsx watch restarts the server              |
+
+These are alternative local launch modes. Both use the same API port and, unless configured otherwise, the same database. Stop one before launching the other. The server runs TypeScript through tsx in both modes; the built client is not a separate deployed production environment.
 
 To use a separate fresh workspace, without deleting existing decisions:
 
@@ -36,7 +51,7 @@ Stop your server with Control+C before starting another on the same port, or spe
 
 ## Local LLM (optional)
 
-Install Ollama separately. The app's chosen provider is **local Ollama**, and the default model is **qwen3:4b-instruct**, matching the candidate's prior technology stack. No account or paid key is needed. If Ollama is already running, use that instance and `ollama pull qwen3:4b-instruct`. Otherwise, in separate terminals:
+Install Ollama separately. The app's chosen provider is **local Ollama**, and the default model is **qwen3:4b-instruct**. No account or paid key is needed. If Ollama is already running, use that instance and `ollama pull qwen3:4b-instruct`. Otherwise, in separate terminals:
 
 ```sh
 npm run model:serve
@@ -51,13 +66,13 @@ The model helper stores downloaded weights in ignored `runtime/models`. `OLLAMA_
 
 Configuration (copy `.env.example` to `.env` if preferred):
 
-| Variable | Default | Meaning |
-|---|---|---|
-| PORT | 3002 | API and production UI port |
-| DATABASE_PATH | runtime/revops.sqlite | SQLite workspace |
-| LLM_PROVIDER | rules | rules or ollama |
-| OLLAMA_MODEL | qwen3:4b-instruct | Local model name |
-| LLM_TIMEOUT_MS | 30000 | Request timeout, bounded at 60 seconds |
+| Variable       | Default               | Meaning                                |
+| -------------- | --------------------- | -------------------------------------- |
+| PORT           | 3002                  | API and production UI port             |
+| DATABASE_PATH  | runtime/revops.sqlite | SQLite workspace                       |
+| LLM_PROVIDER   | rules                 | rules or ollama                        |
+| OLLAMA_MODEL   | qwen3:4b-instruct     | Local model name                       |
+| LLM_TIMEOUT_MS | 30000                 | Request timeout, bounded at 60 seconds |
 
 Only `http://127.0.0.1:11434/api/chat` is used for model inference. Redirects are blocked, thinking is disabled and the output is constrained by JSON schema. Failure yields `needs review`, never a silent positive fallback. Seed import deliberately uses rules so a missing model cannot block startup. Reanalyze a lead or add an inbound to exercise the configured model; stored results retain their original mode. Generating a brief also uses the configured provider. Existing offline briefs remain visibly labelled.
 
@@ -143,9 +158,9 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Vitest + Supertest cover core rules, identity, report boundaries, KPI traces, API mutations, persistence, concurrent writes, evidence validation and model failures with offline mocks. Playwright checks desktop and 390 px flows using a separate test database. `docs/VALIDATION.md` records actual outcomes, including the separately run live-model smoke test.
+Vitest + Supertest cover core rules, identity, report boundaries, KPI traces, API mutations, persistence, concurrent writes, evidence validation and model failures with offline mocks. Playwright checks desktop and 390 px flows using a separate test database. [docs/VALIDATION.md](docs/VALIDATION.md) records actual outcomes, including the separately run live-model smoke test.
 
-Node 24.12 emits an experimental warning for its built-in SQLite driver. This is the same driver family used in the earlier project; the tested runtime is pinned in the requirements above. The warning does not prevent operation. Vite may emit harmless upstream Zod comment-annotation warnings.
+Node 24.12 emits an experimental warning for its built-in SQLite driver. The tested Node version is stated in the runtime requirements above. The warning does not prevent operation. Vite may emit harmless upstream Zod comment-annotation warnings.
 
 ## Cuts and next steps
 
@@ -154,6 +169,6 @@ No optional HubSpot sync, email integration, authentication, deployment or uploa
 ## Submission
 
 - `KPI_PACK.md` is generated from stored decisions, with a CRO note under 150 words.
-- `PROCESS.md` is a candidate process draft and must be completed in the candidate's own first person, with honest personal hours. `docs/AI_LOG.md` records actual assistant activity.
+- [PROCESS.md](PROCESS.md) requires the candidate’s final first-person review notes and actual personal hours. [docs/AI_LOG.md](docs/AI_LOG.md) records implementation assistance.
 - Commit reviewed work, then `npm run package` creates `../stargo-revops-ts-review.zip` including `.git` and excluding ignored runtime data, models, dependencies and `.env`.
 - Nothing is sent or published automatically. Reply to the original assignment email only after final review, with repository/archive, total personal hours and the model actually used. The source brief's deadline and no-undisclosed-post-submission-changes rule still apply.

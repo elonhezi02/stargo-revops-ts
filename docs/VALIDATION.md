@@ -1,18 +1,48 @@
-# Validation — 4 November 2026
+# Validation record
 
-Documentation status: **4 November 2026**. Project chronology: [TIMELINE.md](TIMELINE.md).
+Checks executed: **4 November 2026**. Documentation reviewed: **5 November 2026**. Environment: macOS Apple Silicon, Node.js 24.12.0, synthetic assignment data only.
 
-New TypeScript implementation, tested on macOS Apple Silicon with Node 24.12.0. Only synthetic data was used.
+## Completed checks
 
-- **39 Vitest/Supertest tests passed**: QL gate, owner/size boundaries, identity matching and conflicting identifiers, first touch, timezone boundaries, duplicate accepts, historical reject/current accept, evidence timing, earlier cohorts, unknown feeds, suppression, exact evidence, unsafe input, local-model HTTP failures, persistence, atomic revision conflicts, blank inputs and look-alike brands.
-- TypeScript compilation, Vite production build and Prettier checks passed.
-- **Two Playwright browser tests passed**: desktop weekly metric drilldown into Felix and lead evidence, plus 390 px new inbound → candidate → accepted QL, brief generation and no document overflow. Native dialog Escape handling was verified. Each run uses a fresh test database; a repeated-run selector issue found during testing was fixed.
-- Desktop and mobile screenshots were visually inspected. Screenshots and browser data are ignored runtime artifacts, not submission inputs.
-- Baseline report is 6 acquisition QLs, 4 booked, 3 held and 2 opportunities. Expansion is 1 accepted contact and 1 booked meeting. Historical-reactivation is unknown. Every metric includes record IDs. The generated CRO note is below 150 words.
-- **Real local inference passed** with Ollama 0.34.4 and `qwen3:4b-instruct`, using the existing downloaded model cache. New positive buyer → QL candidate; explicit negative interest → nurture; hidden instructions and unsupported Arabic → needs review; generated constrained brief → ready with 50 words. The latter two input checks intentionally stop before model inference. This is a small smoke evaluation, not a multilingual benchmark.
-- Default operation needs no key, live model or network. No external provider, email or CRM was called. Tests mock model failures; live inference used loopback only.
-- Known non-blocking tool warnings: Node's built-in SQLite experimental status; upstream Zod pure-comment warnings from Vite; Playwright color environment warning. All relevant checks completed successfully despite these warnings.
+| Check                         | Result    | Coverage                                                                                                             |
+| ----------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| Vitest and Supertest          | 39 passed | Qualification, identity, time boundaries, counting, decisions, evidence, persistence, API errors and write conflicts |
+| TypeScript, Vite and Prettier | Passed    | Type checking, production client build and source formatting                                                         |
+| Playwright desktop            | Passed    | KPI drilldown, Felix's supporting record, lead evidence and dialog Escape handling                                   |
+| Playwright at 390 px          | Passed    | New inbound, candidate status, acceptance, brief generation and no page overflow                                     |
+| Screenshot inspection         | Completed | Desktop and mobile layout; local runtime artifacts                                                                   |
+| Clean archive installation    | Passed    | Fresh extraction, npm ci, npm check, KPI export, static page and baseline API                                        |
+| Local model smoke test        | Passed    | Ollama 0.34.4 with qwen3:4b-instruct; synthetic inputs in a disposable database                                      |
 
-Limits: no exhaustive security audit, universal prompt-injection detector, general semantic claim checker, broad model accuracy benchmark or production-scale concurrency test. Candidate personal review and first-person PROCESS.md remain to be completed.
+The tests cover owner and company-size boundaries, duplicate acceptance, first-touch attribution, missing feeds, prior cohorts, historical rejection/current acceptance, evidence timing, failed reanalysis, exact quotes, fabricated employee counts, blank inputs, look-alike brands and safe model errors. Browser runs use fresh databases; a repeated-run selector issue was corrected before the final successful run.
 
-Clean archive verification also passed: extracted the review ZIP into a fresh temporary directory, ran npm ci and the full npm check command, generated KPI_PACK.md, then verified the production static page and 6/4/3/2 baseline through the Express API. The archive includes `.git/HEAD` and excludes node_modules, runtime data and `.env`. Source files compare byte-for-byte with the original pack.
+## Report reconciliation
+
+| Acquisition metric | Observed | Target |
+| ------------------ | -------: | -----: |
+| Qualified leads    |        6 |     25 |
+| Meetings booked    |        4 |     15 |
+| Meetings held      |        3 |     12 |
+| Opportunities      |        2 |      5 |
+
+Expansion is separate: one accepted contact and one booked meeting. Historical-reactivation is unknown because its feed was not received. Every counted metric includes record IDs. The generated CRO note is under 150 words.
+
+## Live-model outcomes
+
+| Scenario                                                        | Observed result                        |
+| --------------------------------------------------------------- | -------------------------------------- |
+| New buyer with explicit company facts, problem and demo request | QL candidate                           |
+| Explicit negative interest                                      | Nurture                                |
+| Hidden instructions                                             | Needs review; blocked before inference |
+| Unsupported Arabic input                                        | Needs review; blocked before inference |
+| Constrained content plan                                        | Ready; 50-word direct answer           |
+
+These results demonstrate a small local smoke test, not general model accuracy or multilingual coverage. Default no-key operation uses rules and does not contact a model. Live inference used loopback only.
+
+## Packaging and known limitations
+
+The tested archive contained Git history and excluded node_modules, runtime data and .env. The source pack matched the original files byte-for-byte. Installation required internet; rules-mode operation did not.
+
+Non-blocking tool warnings concerned Node's experimental SQLite driver, upstream Zod comment annotations during the Vite build, and Playwright color settings. All listed checks completed successfully.
+
+No exhaustive security audit, universal injection detector, general semantic claim checker or production-scale load test is claimed. The candidate's final manual review is separate from these assistant-run checks and remains in progress. Follow [REVIEW.md](REVIEW.md) to complete it.
