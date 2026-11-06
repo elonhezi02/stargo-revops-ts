@@ -38,3 +38,7 @@ A local Ollama run used the already-downloaded `qwen3:4b-instruct` model. Positi
 At the candidate's request, the documentation was audited against the supplied brief. The review guide was rewritten in English, local run modes were clarified, document responsibilities were separated, and links and status dates were checked. Original source files and the generated reporting scenario were preserved.
 
 No candidate hours have been supplied. The final personal review remains in progress. No submission email, repository push or deployment was performed as part of this work.
+
+## Review correction — 6 November 2026
+
+During manual review, the candidate identified that sales acceptance displayed as `0/0` looked like incomplete agent analysis. At the candidate's request, Codex separated the four scored automated checks from a clearly labelled human sales decision. The human status now reads Awaiting sales approval, Approved by sales or Rejected by sales, with decision evidence retained. TypeScript/client build and both existing Playwright flows passed. Qualification rules and stored decisions were unchanged.
