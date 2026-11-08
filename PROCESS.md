@@ -1,46 +1,57 @@
 # Engineering process
 
-AI-assisted editorial draft, updated 5 November 2026. Final personal review notes and time reporting remain open.
+Updated 8 November 2026. Working account prepared with editorial AI assistance; final personal sign-off remains to be completed before submission.
 
-## Direction and technology selection
+## Objectives and technical direction
 
-I chose to use a consistent technology stack across my Stargo assignments: TypeScript, React, Express, Zod and SQLite. Before committing to that direction, I asked Codex to compare the existing implementations with the assignment's permitted technologies and present a plan for my approval. I approved the TypeScript approach after that comparison.
+I prioritized a consistent TypeScript stack across my Stargo assignments: React, Express, Zod and SQLite, with Ollama for local inference. Before approving implementation, I requested a comparison with the permitted technologies and a plan. I chose a separate repository so the assignment could be reviewed and run independently.
 
-I then requested a separate implementation and repository rather than modifying the existing project. This repository's build started on 4 November 2026. The original assignment pack supplies the requirements and synthetic data; its October reporting dates are independent of the development timeline.
+My main acceptance criteria were traceable qualification, an auditable reporting window, explicit human approval and a codebase that is straightforward to navigate and extend. The source pack's October dates are business scenario data; this implementation began on 4 November 2026.
 
-## How I used AI
+## AI workflow and responsibilities
 
-I worked with Codex as an implementation collaborator. I set the technology-consistency requirement, requested the comparison and plan before changes, approved the direction, and defined the separate-project boundary. Codex generated the application code and supporting tests, ran the automated checks, and prepared documentation drafts. I requested explanations of the architecture, local execution and requirement coverage throughout the work.
+I used Codex for implementation, refactoring, test execution and documentation assistance. I directed scope and technology selection, reviewed the interface and structure, and requested corrections when the implementation did not meet my expectations. The generated implementation and tests were checked through automated regression suites and a local-model smoke run. My final independent code walkthrough remains open.
 
-My instructions evolved through three concrete decisions. The following are summaries of the requests, not verbatim quotations:
+The following are translated excerpts from my actual Hebrew instructions, rather than reconstructed prompts:
 
-- Compare the previous project's stack with the assignment constraints before proposing changes.
-- Use the approved TypeScript stack in an independent implementation with its own documentation and Git repository.
-- Complete the technical validation and prepare the application for a final review together.
+| Stage                  | Instruction excerpt, translated into English                                                                                                                               | Result                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Technology alignment   | “I want to use technologies according to the instructions, but also similar to what I used in the previous assignment, to maintain technological consistency if possible.” | Compare the permitted stack before implementation.                                                              |
+| Local inference        | “I prefer that we do this using an Ollama model, as we did in the previous assignment.”                                                                                    | Use local model inference for new analyses and content planning while retaining the required no-model fallback. |
+| Human approval display | “Fix this display issue as well; it is indeed confusing and looks like part of the agent's analysis.”                                                                      | Separate sales acceptance from the scored automated checks.                                                     |
+| Dependency injection   | “Review the architecture in general and see what else you can improve … using DI, so everything is flexible and can be changed and adapted.”                               | Centralize dependency wiring and separate versioned prompts from transport calls.                               |
+| Full-stack structure   | “A web service should contain a controller, service, DB, etc. … In the client too … it looks like everything is in one component.”                                         | Organize server layers and split the client into features, shared components, a state hook and API methods.     |
 
-This division let me control the scope and technology choices while using AI for implementation and verification. The implementation activity and observed results are recorded in [docs/AI_LOG.md](docs/AI_LOG.md) and [docs/VALIDATION.md](docs/VALIDATION.md).
+I allowed implementation work to proceed within the agreed scope, then used review findings to steer the next iteration. The architecture required a second pass: extracting functions alone did not provide the folder structure and discoverability I wanted. I requested explicit layer boundaries and a feature-based client organization rather than accepting the first refactor as complete.
 
-## Design rationale
+## Review findings and corrections
 
-The implementation separates extraction from qualification. Agent A returns structured, evidence-linked facts; Agent B applies explicit qualification, exclusion and routing rules. A high priority score cannot replace recorded sales acceptance or override missing evidence.
+During the UI review I identified the `0/0` display for sales acceptance as misleading: it suggested unfinished automated analysis. The revised interface distinguishes four scored checks from a separate human sales decision. Approval remains required for QL status but adds no points.
 
-The historical report uses event-time boundaries in Asia/Jerusalem and preserves earlier analyses when a lead is reanalyzed. This keeps current work from silently rewriting a past week's results. Missing feeds remain unknown, and expansion is reported separately.
+I also challenged the use of rules mode when my intended technical demonstration was local inference. Ollama is now the exercised local model, while the clearly labelled rules fallback remains available because the assignment requires end-to-end operation without a key. Stored seed analyses keep their original mode; changing configuration does not rewrite history.
 
-Content generation is deliberately constrained: the model selects approved claims and a content structure, while factual sentences come from a source-tagged catalog. The tradeoff is reduced flexibility in exchange for traceable claims.
+For maintainability, I requested dedicated prompt files, constructor/function injection, HTTP controllers and services, a repository contract and provider adapters. In the client, the large entry component was split into lead, reporting and visibility features. These changes retain the API contract and stored-state format.
 
-## Verification and review
+## Design decisions and tradeoffs
 
-The completed assistant-run checks include 39 offline tests, two browser flows, a clean archive installation and a local Ollama smoke test. The live test used `qwen3:4b-instruct` and covered positive and negative interest, safe review routing and a grounded content brief. These results describe what was exercised, not a claim of exhaustive correctness.
+- **Extraction versus qualification:** the model extracts evidence-linked facts; deterministic code applies qualification gates, exclusions, routing and scoring. A score of 100 cannot replace recorded sales acceptance.
+- **Historical integrity:** reports use event-time boundaries in Asia/Jerusalem. Reanalysis appends a current version, allowing the earlier reporting period to retain its evidence history.
+- **Grounded content:** the model selects approved claim IDs and structure. Rendering uses source-tagged catalog text, trading free-form creativity for traceability.
+- **Replaceable infrastructure:** model and repository contracts separate use cases from concrete transports and SQLite. Provider, model and local endpoint are externally configured.
+- **Scope control:** SQLite's versioned workspace document suits this local dataset. A normalized production database, background jobs, comprehensive language evaluation and real account integrations are outside this submission's implemented scope.
 
-On 5 November, I requested clarification of the built-client and development run modes before continuing the review. I also requested a documentation audit against the brief, with a plan presented before edits.
+## Verification evidence
 
-The functional review is in progress. My final account will record observations from tracing two KPI counts, testing historical and current sales decisions, checking restart persistence, and inspecting qualification and failure handling. Any corrections resulting from that review will be recorded here.
+The latest automated run on 8 November passed **51 tests**, TypeScript/build/format checks and two browser workflows, including a 390 px viewport. A real `qwen3:4b-instruct` run covered positive and negative interest and a grounded 50-word brief; unsafe instructions and unsupported Arabic were routed to review before inference. These checks were executed with Codex assistance against isolated test databases.
 
-## Time and next steps
+The additional OpenAI-compatible adapter has mocked protocol and failure tests; it has not been exercised against a second installed inference runtime. The earlier 4 November archive passed clean-install checks. The archive must be regenerated and checked against the final reviewed revision. Full evidence is in [VALIDATION.md](docs/VALIDATION.md).
 
-- Personal time spent: **to be completed from my actual time records**.
-- Development assistant: **Codex**.
-- Application model exercised in the build: **qwen3:4b-instruct via local Ollama**.
-- Final personal review and code walkthrough: **in progress**.
+## Final personal review and time report
 
-After the review, I will revise this account in my own words and complete the time report. The remaining technical limitations are documented in the README, particularly conservative language coverage, constrained content generation and the small-workspace storage design.
+- Personal time spent: **approximately 4 hours**, as reported on 8 November 2026; this is an estimate, not an instrumented time log.
+- Development tool: **Codex**.
+- Live application model: **qwen3:4b-instruct via Ollama**.
+- Independent walkthrough, including two KPI traces and a small code change: **in progress**.
+- Final archive validation and submission: **pending**.
+
+Before submission I will confirm the final time estimate, review this account in my own words and record the remaining walkthrough results. This document does not claim completion of those steps.

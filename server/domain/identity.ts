@@ -1,5 +1,5 @@
 import { getDomain } from "tldts";
-import type { Contact } from "../shared/contracts.js";
+import type { Contact } from "../../shared/contracts.js";
 export const emailKey = (v?: string | null) => v?.trim().toLowerCase() || null;
 export function linkedinKey(value?: string | null) {
   if (!value?.trim()) return null;

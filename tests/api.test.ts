@@ -3,8 +3,9 @@ import request from "supertest";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createApp } from "../server/app.js";
-import { Store, ConflictError } from "../server/storage.js";
+import { createApp, type AppOptions } from "../server/composition.js";
+import { Store } from "../server/infrastructure/db/sqlite-workspace-repository.js";
+import { ConflictError } from "../server/ports/workspace-repository.js";
 const cleanup: (() => void)[] = [];
 afterEach(() => {
   cleanup
@@ -13,11 +14,11 @@ afterEach(() => {
     .forEach((f) => f());
   vi.unstubAllEnvs();
 });
-async function setup() {
+async function setup(options: AppOptions = {}) {
   vi.stubEnv("LLM_PROVIDER", "rules");
   const dir = mkdtempSync(join(tmpdir(), "revops-test-"));
   cleanup.push(() => rmSync(dir, { recursive: true, force: true }));
-  const a = await createApp(join(dir, "db.sqlite"));
+  const a = await createApp(join(dir, "db.sqlite"), options);
   cleanup.push(() => a.store.close());
   return { ...a, path: join(dir, "db.sqlite"), req: request(a.app) };
 }
@@ -119,21 +120,67 @@ it("serializes concurrent writes and rejects cross-process lost updates", async 
   expect(a.store.read().rejected.some((x) => x.id === "lost")).toBe(false);
 });
 it("model failure creates needs-review without changing historical count", async () => {
-  const a = await setup();
-  vi.stubEnv("LLM_PROVIDER", "ollama");
-  vi.stubGlobal(
-    "fetch",
-    vi.fn().mockRejectedValue(new Error("private prompt")),
-  );
-  try {
-    await a.req.post("/api/leads/HS-1001/reanalyze").send({}).expect(200);
-    const data = (await a.req.get("/api/workspace")).body;
-    expect(
-      data.leads.find((l: { id: string }) => l.id === "HS-1001").status,
-    ).toBe("needs review");
-    expect(data.pack.metrics[0].actual).toBe(6);
-    expect(JSON.stringify(data)).not.toContain("private prompt");
-  } finally {
-    vi.unstubAllGlobals();
-  }
+  const a = await setup({
+    settings: {
+      port: 3002,
+      database: ":memory:",
+      provider: "ollama",
+      model: "test",
+      timeout: 1000,
+    },
+    generate: async () => {
+      throw new Error("private prompt");
+    },
+  });
+  await a.req.post("/api/leads/HS-1001/reanalyze").send({}).expect(200);
+  const data = (await a.req.get("/api/workspace")).body;
+  expect(
+    data.leads.find((l: { id: string }) => l.id === "HS-1001").status,
+  ).toBe("needs review");
+  expect(data.pack.metrics[0].actual).toBe(6);
+  expect(JSON.stringify(data)).not.toContain("private prompt");
+});
+
+it("isolates providers and injects prompts and clock without mutating global configuration", async () => {
+  const { rules } = await import("../server/agents/extraction-agent.js");
+  const calls: string[] = [];
+  const live = await setup({
+    settings: {
+      port: 3002,
+      database: ":memory:",
+      provider: "ollama",
+      model: "injected-model",
+      timeout: 1000,
+    },
+    prompts: {
+      extraction: "custom extraction prompt",
+      brief: "custom brief prompt",
+    },
+    generate: async (prompt, input) => {
+      calls.push(prompt);
+      return rules((input as { message: string }).message);
+    },
+    services: { now: () => new Date("2026-11-06T09:00:00Z") },
+  });
+  const offline = await setup();
+  vi.stubEnv("LLM_PROVIDER", "invalid-after-start");
+  expect((await live.req.get("/api/health")).body.provider).toBe("ollama");
+  expect((await offline.req.get("/api/health")).body.provider).toBe("rules");
+  const result = await live.req
+    .post("/api/leads")
+    .send({
+      from_name: "DI prospect",
+      channel: "form_fill",
+      body: "I own a 45-person customs brokerage in Haifa. We handle import declarations manually. Can we see a demo?",
+    })
+    .expect(201);
+  expect(calls).toEqual(["custom extraction prompt"]);
+  const lead = live.store.read().analyses.at(-1)!;
+  expect(lead.mode).toBe("ollama");
+  expect(lead.error).toBeNull();
+  const decision = await live.req
+    .post(`/api/leads/${result.body.contact_id}/decisions`)
+    .send({ decision: "accepted" })
+    .expect(201);
+  expect(decision.body.recorded_at).toBe("2026-11-06T09:00:00.000Z");
 });

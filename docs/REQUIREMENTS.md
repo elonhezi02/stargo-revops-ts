@@ -1,6 +1,6 @@
 # Requirement coverage
 
-Reviewed 5 November 2026 against the [supplied brief](../source/Stargo_RevOps_Take_Home_Pack_v2/Stargo_RevOps_Engineer_Take_Home.md). Technical verification was recorded on 4 November in [VALIDATION.md](VALIDATION.md).
+Reviewed 8 November 2026 against the [supplied brief](../source/Stargo_RevOps_Take_Home_Pack_v2/Stargo_RevOps_Engineer_Take_Home.md). Latest technical verification was recorded on 8 November in [VALIDATION.md](VALIDATION.md).
 
 ## Functional requirements
 
@@ -29,13 +29,18 @@ Reviewed 5 November 2026 against the [supplied brief](../source/Stargo_RevOps_Ta
 
 ## Deliverables
 
-| Deliverable                                 | Location                                      | Status                                            |
-| ------------------------------------------- | --------------------------------------------- | ------------------------------------------------- |
-| Repository and history                      | Git repository; npm run package includes .git | Available for review                              |
-| Setup, architecture, formulas and tradeoffs | [README.md](../README.md)                     | Documented                                        |
-| Personal AI workflow and time               | [PROCESS.md](../PROCESS.md)                   | Draft; candidate review and actual hours required |
-| Exported report and CRO note                | [KPI_PACK.md](../KPI_PACK.md)                 | Generated; CRO note below 150 words               |
-| Submission message                          | Original assignment email thread              | Not sent                                          |
-| Live walkthrough without AI                 | Candidate preparation                         | In progress                                       |
+| Deliverable                                 | Location                                      | Status                                                                |
+| ------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------- |
+| Architecture and extension guide            | [ARCHITECTURE.md](ARCHITECTURE.md)            | Updated for server layers, client features and provider configuration |
+| Repository and history                      | Git repository; npm run package includes .git | Working changes require final commit/archive                          |
+| Setup, architecture, formulas and tradeoffs | [README.md](../README.md)                     | Documented                                                            |
+| Personal AI workflow and time               | [PROCESS.md](../PROCESS.md)                   | Approximately 4 hours reported; final personal sign-off pending       |
+| Exported report and CRO note                | [KPI_PACK.md](../KPI_PACK.md)                 | Generated; CRO note below 150 words                                   |
+| Submission message                          | Original assignment email thread              | Not sent                                                              |
+| Live walkthrough without AI                 | Candidate preparation                         | In progress                                                           |
 
 Optional HubSpot sync, a labelled model benchmark and a screen recording are not required for completion and are not included. Manual review steps are in [REVIEW.md](REVIEW.md).
+
+## Current verification scope
+
+The 8 November revision passed 51 unit/API/adapter tests, two browser workflows, TypeScript/build/format checks and a real Ollama smoke run. The additional local compatible adapter has mocked protocol coverage only. Clean archive installation was verified on 4 November; repeat it on the final packaged revision. The independent walkthrough and final personal sign-off remain open. Approximately 4 hours have been reported in PROCESS.md.

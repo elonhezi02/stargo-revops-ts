@@ -4,8 +4,8 @@ import { join } from "node:path";
 import assert from "node:assert/strict";
 import request from "supertest";
 process.env.LLM_PROVIDER = "ollama";
-const { createApp } = await import("../server/app.js");
-const { config } = await import("../server/config.js");
+const { createApp } = await import("../server/composition.js");
+const { config } = await import("../server/config/environment.js");
 const dir = mkdtempSync(join(tmpdir(), "stargo-live-"));
 const { app, store } = await createApp(join(dir, "live.sqlite"));
 try {

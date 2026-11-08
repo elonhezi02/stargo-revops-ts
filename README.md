@@ -4,13 +4,14 @@ A local RevOps application for evidence-based lead qualification, traceable week
 
 ## Documentation
 
+- [Architecture and extension points](docs/ARCHITECTURE.md): server layers, client features and dependency replacement.
 - [Review guide](docs/REVIEW.md): practical walkthrough and expected outcomes.
 - [Requirement coverage](docs/REQUIREMENTS.md): implementation and verification against the brief.
 - [Validation record](docs/VALIDATION.md): executed checks and their limits.
 - [Engineering process](PROCESS.md): candidate decisions and personal review draft.
 - [Implementation plan](docs/PLAN.md), [timeline](docs/TIMELINE.md) and [AI activity record](docs/AI_LOG.md): supporting development records.
 
-This implementation began on 4 November 2026. Documentation was reviewed on 5 November. October timestamps belong to the assignment’s reporting scenario.
+This implementation began on 4 November 2026. Documentation was reviewed on 8 November. October timestamps belong to the assignment’s reporting scenario.
 
 ## Run with no model and no key
 
@@ -66,15 +67,18 @@ The model helper stores downloaded weights in ignored `runtime/models`. `OLLAMA_
 
 Configuration (copy `.env.example` to `.env` if preferred):
 
-| Variable       | Default               | Meaning                                |
-| -------------- | --------------------- | -------------------------------------- |
-| PORT           | 3002                  | API and production UI port             |
-| DATABASE_PATH  | runtime/revops.sqlite | SQLite workspace                       |
-| LLM_PROVIDER   | rules                 | rules or ollama                        |
-| OLLAMA_MODEL   | qwen3:4b-instruct     | Local model name                       |
-| LLM_TIMEOUT_MS | 30000                 | Request timeout, bounded at 60 seconds |
+| Variable       | Default               | Meaning                                             |
+| -------------- | --------------------- | --------------------------------------------------- |
+| PORT           | 3002                  | API and production UI port                          |
+| DATABASE_PATH  | runtime/revops.sqlite | SQLite workspace                                    |
+| LLM_PROVIDER   | rules                 | rules, ollama or openai-compatible                  |
+| LLM_MODEL      | qwen3:4b-instruct     | Model name; overrides the legacy OLLAMA_MODEL alias |
+| LLM_ENDPOINT   | Provider default      | Full local inference endpoint                       |
+| LLM_TIMEOUT_MS | 30000                 | Request timeout, bounded at 60 seconds              |
 
-Only `http://127.0.0.1:11434/api/chat` is used for model inference. Redirects are blocked, thinking is disabled and the output is constrained by JSON schema. Failure yields `needs review`, never a silent positive fallback. Seed import deliberately uses rules so a missing model cannot block startup. Reanalyze a lead or add an inbound to exercise the configured model; stored results retain their original mode. Generating a brief also uses the configured provider. Existing offline briefs remain visibly labelled.
+Ollama defaults to `http://127.0.0.1:11434/api/chat`. Set `LLM_ENDPOINT` to override the local endpoint. The `openai-compatible` adapter defaults to `http://127.0.0.1:1234/v1/chat/completions` and requires a local server supporting JSON-schema response format. Endpoints must be loopback HTTP(S) URLs; credentials, query parameters and redirects are rejected. Ollama thinking is disabled, and both adapters request schema-constrained output. Failure yields `needs review`, never a silent positive fallback. Seed import deliberately uses rules so a missing model cannot block startup. Reanalyze a lead or add an inbound to exercise the configured model; stored results retain their original mode. Generating a brief also uses the configured provider. Existing offline briefs remain visibly labelled.
+
+To switch to an already-running local compatible server, set `LLM_PROVIDER=openai-compatible`, `LLM_MODEL` to its loaded model, and `LLM_ENDPOINT` to its full Chat Completions endpoint, then restart the API. No controller or agent edits are needed. Ollama remains the live-verified default; compatible transport is covered with mocked protocol tests, not a second installed model runtime.
 
 The live smoke script uses a disposable database and synthetic messages:
 
@@ -106,13 +110,17 @@ Source CSV / JSON or pasted inbound
 ```
 
 - `shared/contracts.ts`: shared Zod schemas and inferred client/server types.
-- `server/identity.ts`: email and LinkedIn person identity; domain normalization using a bundled public suffix list.
-- `server/extraction.ts`, `server/model.ts`: literal extraction aids, bounded inference, evidence validation and safe errors.
-- `server/qualification.ts`: five-condition gate, exclusions, score, ownership and reply templates.
-- `server/reporting.ts`: Jerusalem week boundaries, first touch, events, traces and Markdown export.
-- `server/visibility.ts`: synthetic capture audit, ranking and approved claim catalog.
-- `server/storage.ts`: first import and SQLite persistence with revision checks.
-- `server/app.ts`: local Express API. `client/`: responsive React workspace with native dialog focus containment.
+- `server/domain/identity.ts`: email and LinkedIn person identity; domain normalization using a bundled public suffix list.
+- `server/agents/extraction-agent.ts`, `server/infrastructure/llm/ollama-adapter.ts`: literal extraction aids, bounded inference, evidence validation and safe errors.
+- `server/domain/qualification.ts`: five-condition gate, exclusions, score, ownership and reply templates.
+- `server/domain/reporting.ts`: Jerusalem week boundaries, first touch, events, traces and Markdown export.
+- `server/infrastructure/data/visibility.ts`: synthetic capture audit and gap ranking. `server/agents/content-brief-agent.ts`: approved claims and constrained brief generation.
+- `server/infrastructure/db/sqlite-workspace-repository.ts`: SQLite persistence with revision checks. `server/infrastructure/data/seed.ts`: initial import.
+- `server/composition.ts`: configuration and dependency wiring. `server/services/workspace-service.ts`: use-case orchestration.
+- `server/agents/prompts/*.ts`: versioned extraction and content prompts.
+- `server/http/app.ts`: thin local Express API. `client/`: responsive React workspace with native dialog focus containment.
+
+See [Architecture and extension points](docs/ARCHITECTURE.md) for dependency injection, module responsibilities and provider replacement.
 
 Plain CSS keeps the layout small and auditable; Lucide provides consistent local SVG icons. No external fonts, analytics, remote images or agent framework are required.
 
@@ -164,7 +172,7 @@ Node 24.12 emits an experimental warning for its built-in SQLite driver. The tes
 
 ## Cuts and next steps
 
-No optional HubSpot sync, email integration, authentication, deployment or uploads: the requested paste/seed workflow is implemented. No full semantic claim verifier, comprehensive multilingual parser, background job worker, full normalized database or production authorization. Local model calls can take tens of seconds and the UI shows a pending state. Next steps would be a broader labelled extraction evaluation, versioned prompts/model provenance, an explicit identity-resolution UI and async jobs with cancellation.
+No optional HubSpot sync, email integration, authentication, deployment or uploads: the requested paste/seed workflow is implemented. No full semantic claim verifier, comprehensive multilingual parser, background job worker, full normalized database or production authorization. Local model calls can take tens of seconds and the UI shows a pending state. Next steps would be a broader labelled extraction evaluation, persisted prompt/model provenance, an explicit identity-resolution UI and async jobs with cancellation.
 
 ## Submission
 

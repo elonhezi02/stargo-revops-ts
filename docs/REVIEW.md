@@ -1,6 +1,6 @@
 # Review guide
 
-Updated 5 November 2026. This guide describes the final manual review; it is not a record of completed candidate testing. Recorded automated results are in [VALIDATION.md](VALIDATION.md).
+Updated 8 November 2026. This guide describes the final manual review; it is not a record of completed candidate testing. Recorded automated results are in [VALIDATION.md](VALIDATION.md).
 
 ## Prepare an isolated workspace
 
@@ -59,7 +59,7 @@ Expected result: **QL candidate**, score **100**, owner **Noa**. The firmographi
 1. Accept at `2026-10-07T15:00:00+03:00`. The historical QL total should increase from 6 to 7, with the extra contact under source not recorded.
 2. Reject at `2026-10-08T15:00:00+03:00`. The historical total should return to 6.
 3. Accept with the decision time blank, which defaults to now. The current contact should be QL, while the historical total remains 6.
-4. Restart the application using the same database. Confirm both decisions and report results persist.
+4. Restart the application using the same database. Confirm all three decisions and report results persist.
 
 Also test a blank message and an invalid identity: the UI should report validation errors without adding a partial record. A message instructing the system to ignore its rules must require human review. Supported Hebrew and Dutch patterns can be examined in the supplied seed; broader language support is deliberately limited.
 
@@ -89,3 +89,11 @@ The export reflects the configured database. Decide deliberately whether the del
 Complete the personal review notes and time report in [PROCESS.md](../PROCESS.md), then commit the reviewed state and run `npm run package`. The archive includes Git history. No email is sent by this command.
 
 For the live code discussion, be ready to explain the two-agent boundary, identity matching, the five-condition gate, report cutoff, model failure behavior and constrained claims. Practice one small code change without AI assistance.
+
+## 6. Code walkthrough
+
+Trace one inbound request through `server/http/routes.ts`, `controllers/workspace-controller.ts`, `services/workspace-service.ts`, `services/ingestion-service.ts` and the extraction agent. Explain how the repository update commits an analysis and recomputes the report. Then inspect `domain/qualification.ts` to distinguish score from the five-condition gate.
+
+In `server/composition.ts`, identify the injected model, prompts and repository. Explain how `LLM_PROVIDER`, `LLM_MODEL` and `LLM_ENDPOINT` select an existing adapter, and where a new protocol adapter would be registered. Do not claim live validation of the compatible provider; only Ollama has been exercised against a real runtime.
+
+In the client, follow `App.tsx` to a feature component, `hooks/useWorkspace.ts` and `api/workspace.ts`. Explain which state belongs to a feature and which belongs to workspace loading/mutations.

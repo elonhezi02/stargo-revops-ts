@@ -848,3 +848,33 @@ small {
 .search {
   flex-direction: row;
 }
+
+/* Shared interaction and detail surfaces across feature components. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #658b76;
+}
+.detail-section {
+  margin: 24px 0;
+  padding-top: 8px;
+  border-top: 1px solid #e4e9df;
+}
+.detail-section > h3:first-child {
+  margin-top: 12px;
+}
+.analysis pre {
+  max-height: 320px;
+  overflow: auto;
+  border-radius: 8px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  .button {
+    transition:
+      background-color 140ms ease,
+      border-color 140ms ease;
+  }
+}

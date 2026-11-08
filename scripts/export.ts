@@ -1,9 +1,9 @@
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { Store } from "../server/storage.js";
-import { config, ROOT } from "../server/config.js";
-import { report, markdown } from "../server/reporting.js";
-import { visibility } from "../server/visibility.js";
+import { Store } from "../server/infrastructure/db/sqlite-workspace-repository.js";
+import { config, ROOT } from "../server/config/environment.js";
+import { report, markdown } from "../server/domain/reporting.js";
+import { visibility } from "../server/infrastructure/data/visibility.js";
 const store = new Store(config().database);
 await store.initialize();
 const pack = report(store.read());

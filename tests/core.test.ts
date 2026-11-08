@@ -1,10 +1,12 @@
 import { beforeEach, afterEach, describe, it, expect, vi } from "vitest";
-import { Store, ingest } from "../server/storage.js";
-import { qualify, parts } from "../server/qualification.js";
-import { report, inWeek, markdown } from "../server/reporting.js";
-import { domainKey, linkedinKey, match } from "../server/identity.js";
-import { extract, rules } from "../server/extraction.js";
-import { visibility, contentBrief, Plan } from "../server/visibility.js";
+import { Store } from "../server/infrastructure/db/sqlite-workspace-repository.js";
+import { ingest } from "../server/services/ingestion-service.js";
+import { qualify, parts } from "../server/domain/qualification.js";
+import { report, inWeek, markdown } from "../server/domain/reporting.js";
+import { domainKey, linkedinKey, match } from "../server/domain/identity.js";
+import { extract, rules } from "../server/agents/extraction-agent.js";
+import { visibility } from "../server/infrastructure/data/visibility.js";
+import { contentBrief } from "../server/agents/content-brief-agent.js";
 import { SignalSchema, type State } from "../shared/contracts.js";
 let store: Store, s: State;
 beforeEach(async () => {

@@ -1,44 +1,26 @@
 # AI-assisted development record
 
-Build date: 4 November 2026. Last documentation update: 5 November 2026.
+Updated 8 November 2026. This record complements the first-person account in [PROCESS.md](../PROCESS.md) with implementation scope and verification evidence.
 
-This supporting record describes Codex activity. The candidate's decisions, personal review and time report belong in [PROCESS.md](../PROCESS.md).
+## Working approach
 
-## Direction and scope
+The candidate directed technology alignment, local-model selection, interface corrections and architectural review. Codex assisted with implementation, refactoring, automated tests and documentation. The scope included shared schemas, identity normalization, extraction validation, qualification, reporting, persistence, HTTP endpoints and the React interface.
 
-The candidate requested a technology comparison against the assignment constraints, approved a TypeScript stack consistent with the earlier Mail Risk Intelligence project, and requested an independent implementation. The new repository uses the original assignment pack; existing application projects were left unchanged.
+Actual instruction excerpts, translated from Hebrew, are recorded in PROCESS.md. The table below distinguishes review decisions from implementation and verification rather than treating generated output as independently reviewed work.
 
-The actual instructions were to compare technologies before proposing changes, implement the approved stack in a separate project, and complete technical validation before final review. These are summaries of the conversation, not verbatim quotations.
+## Iterations and evidence
 
-## Implementation work
+| Date       | Review decision or finding                                               | Implementation response                                                                                       | Verification                                                                                    |
+| ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 4 November | Use the permitted TypeScript stack in an independent repository          | Implement intake, chained extraction/qualification, reporting, persistence and UI                             | 39 tests, build/format checks, browser flows, Ollama smoke and initial archive installation     |
+| 5 November | Make documentation consistent and suitable for review                    | English review guide, clearer run modes and document responsibilities                                         | Documentation cross-check                                                                       |
+| 6 November | Sales acceptance shown as `0/0` was misleading                           | Separate the human decision from four scored automated checks                                                 | Browser workflows and build                                                                     |
+| 6 November | Prompts and dependencies needed clearer boundaries                       | Versioned prompts, composition root, injected service and model transport                                     | 40 tests, browser workflows and Ollama smoke                                                    |
+| 8 November | Flat modules and a large client component remained difficult to navigate | Explicit HTTP/services/domain/ports/infrastructure folders; client features, components, hook and API methods | 51 tests, browser workflows, screenshot inspection and Ollama smoke                             |
+| 8 November | Model selection should be configurable                                   | Provider factory and local OpenAI-compatible transport alongside Ollama                                       | Mocked protocol, error and endpoint validation tests; Ollama remains the live-verified provider |
 
-Codex generated shared Zod contracts; identity normalization; evidence-validated extraction; deterministic qualification and routing; event-time reporting; SQLite persistence; Express routes; and the React review interface. It also prepared automated tests, local-model helpers, KPI export, packaging and documentation drafts.
+Earlier technical corrections included nullability in owner types, blank identity/source normalization, look-alike brand detection and isolated browser test data. These findings informed the regression coverage.
 
-The candidate directed scope and technology decisions. Implementation fixes and automated verification described below were carried out by Codex.
+## Evidence boundaries
 
-## Findings and corrections
-
-| Finding                                                                              | Correction                                                         | Verification             |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------ |
-| Contact ownership and nullable routing ownership produced a TypeScript type conflict | Separated the client lead type from the stored contact-owner field | TypeScript compilation   |
-| Missing browser runtime prevented the initial Playwright launch                      | Installed the required Chromium runtime                            | Browser tests rerun      |
-| Search-field layout needed correction                                                | Adjusted the field's flex direction                                | Screenshot inspection    |
-| Holiday-brand references could be mistaken for Stargo mentions                       | Extended the look-alike detection pattern                          | Targeted regression test |
-| Blank identity/source fields needed explicit normalization                           | Accepted blank values as missing data                              | Intake regression test   |
-| Repeated browser runs selected an earlier test contact                               | Used a fresh test database and exact contact selector              | Both browser flows rerun |
-
-## Verification evidence
-
-The completed 4 November run included 39 offline tests, TypeScript/build/format checks, two browser workflows, visual screenshot inspection and clean archive installation. The seed report computed 6/4/3/2 with supporting record IDs.
-
-A local Ollama run used the already-downloaded `qwen3:4b-instruct` model. Positive and negative interest and content generation exercised real inference. Obvious instructions and unsupported Arabic were routed to review before inference. The test database was disposable. Full outcomes and limits are in [VALIDATION.md](VALIDATION.md).
-
-## Documentation review — 5 November 2026
-
-At the candidate's request, the documentation was audited against the supplied brief. The review guide was rewritten in English, local run modes were clarified, document responsibilities were separated, and links and status dates were checked. Original source files and the generated reporting scenario were preserved.
-
-No candidate hours have been supplied. The final personal review remains in progress. No submission email, repository push or deployment was performed as part of this work.
-
-## Review correction — 6 November 2026
-
-During manual review, the candidate identified that sales acceptance displayed as `0/0` looked like incomplete agent analysis. At the candidate's request, Codex separated the four scored automated checks from a clearly labelled human sales decision. The human status now reads Awaiting sales approval, Approved by sales or Rejected by sales, with decision evidence retained. TypeScript/client build and both existing Playwright flows passed. Qualification rules and stored decisions were unchanged.
+[VALIDATION.md](VALIDATION.md) records current results and separates earlier archive verification from checks on the current code. Automated execution does not replace the candidate's final independent walkthrough. Personal hours and submission status are tracked in PROCESS.md; they are not inferred from tool runtime or conversation duration.

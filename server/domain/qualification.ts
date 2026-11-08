@@ -4,7 +4,7 @@ import {
   type State,
   type Signal,
   type Qualification,
-} from "../shared/contracts.js";
+} from "../../shared/contracts.js";
 export const instant = (v: string) =>
   Date.parse(v.length === 10 ? v + "T00:00:00Z" : v);
 const regions: Record<string, string> = {

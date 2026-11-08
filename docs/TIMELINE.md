@@ -2,7 +2,7 @@
 
 Project: Stargo RevOps — TypeScript implementation.
 Start date: **4 November 2026**. Timezone: **Asia/Jerusalem**.
-Last updated: **5 November 2026**.
+Last updated: **8 November 2026**.
 
 This timeline covers this repository's new build. Completed work is recorded below; future steps remain planned until actually performed. Personal time reporting is maintained separately in [PROCESS.md](../PROCESS.md).
 
@@ -18,11 +18,19 @@ This timeline covers this repository's new build. Completed work is recorded bel
 | 6     | Review materials               | README, PROCESS draft, requirements map, generated KPI pack and review archive prepared.                                                   |
 | 7     | Clean-install verification     | Review archive extracted to a fresh directory; installation, checks and static/API baseline verified.                                      |
 
-The implementation was assisted by Codex; actual assistant activity is recorded in [AI_LOG.md](AI_LOG.md). Candidate-authored reflections and personal hours are pending in [PROCESS.md](../PROCESS.md).
+The implementation was assisted by Codex; actual assistant activity is recorded in [AI_LOG.md](AI_LOG.md). Personal reflections and the reported time estimate are maintained in [PROCESS.md](../PROCESS.md).
 
 ## Review phase — 5 November 2026
 
-Local run modes and the relationship between ports 3002 and 5174 were explained during the review discussion. The candidate requested an audit of all Markdown documentation before further edits. The review guide was rewritten in English, documentation responsibilities clarified, and status dates and links checked. Functional walkthrough and candidate time reporting remain open.
+The review covered local execution modes and documentation consistency. A documentation audit was requested before further edits. The review guide was rewritten in English, documentation responsibilities clarified, and status dates and links checked. The functional walkthrough remained open; the personal time estimate was subsequently recorded on 8 November.
+
+## Architecture refinement — 6 November 2026
+
+Following the candidate's request for consistent technical organization, prompts were separated and versioned, a composition root and injected workspace service were introduced, initial import was separated from persistence, and capture auditing was separated from brief generation. The regression suite, browser workflows and a real Ollama smoke run passed. Details are recorded in ARCHITECTURE.md and VALIDATION.md.
+
+## Layered full-stack refactor — 8 November 2026
+
+At the candidate's request, the code was reorganized into explicit server layers and client features. Provider-neutral configuration and a local compatible adapter were added, with transport/error tests. The API and stored-state format remain unchanged. Current module responsibilities are documented in ARCHITECTURE.md.
 
 ## Remaining steps
 
@@ -30,7 +38,7 @@ Local run modes and the relationship between ports 3002 and 5174 were explained 
 | ----- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | 8     | Candidate review — in progress | Personally walk through the UI, inspect evidence, trace two KPI counts and discuss the code.                       |
 | 9     | Review fixes, if needed        | Record findings, implement agreed corrections and run relevant regression checks.                                  |
-| 10    | Personal process documentation | Candidate completes first-person PROCESS.md and actual personal hours.                                             |
+| 10    | Personal process documentation | Candidate signs off the first-person PROCESS.md and confirms the reported estimate of approximately 4 hours.       |
 | 11    | Final verification and archive | Run final checks against the reviewed commit and regenerate the archive.                                           |
 | 12    | Submission                     | Candidate decides when to submit under the assignment's agreed terms; record actual submission date after sending. |
 

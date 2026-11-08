@@ -1,10 +1,9 @@
-import { createApp } from "./app.js";
-import { config } from "./config.js";
-const { app, store } = await createApp();
-const port = config().port;
+import { createApp } from "./composition.js";
+const { app, store, settings } = await createApp();
+const port = settings.port;
 const server = app.listen(port, "127.0.0.1", () =>
   console.log(
-    `Revenue workspace: http://127.0.0.1:${port} (${config().provider})`,
+    `Revenue workspace: http://127.0.0.1:${port} (${settings.provider})`,
   ),
 );
 server.on("error", (e) => {

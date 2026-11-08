@@ -5,7 +5,7 @@ import {
   type Pack,
   type Metric,
   type Trace,
-} from "../shared/contracts.js";
+} from "../../shared/contracts.js";
 import {
   instant,
   segment,
