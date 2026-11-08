@@ -44,7 +44,7 @@ For maintainability, I requested dedicated prompt files, constructor/function in
 
 The latest automated run on 8 November passed **51 tests**, TypeScript/build/format checks and two browser workflows, including a 390 px viewport. A real `qwen3:4b-instruct` run covered positive and negative interest and a grounded 50-word brief; unsafe instructions and unsupported Arabic were routed to review before inference. These checks were executed with Codex assistance against isolated test databases.
 
-The additional OpenAI-compatible adapter has mocked protocol and failure tests; it has not been exercised against a second installed inference runtime. The earlier 4 November archive passed clean-install checks. The archive must be regenerated and checked against the final reviewed revision. Full evidence is in [VALIDATION.md](docs/VALIDATION.md).
+The additional OpenAI-compatible adapter has mocked protocol and failure tests; it has not been exercised against a second installed inference runtime. The 8 November archive passed clean installation, all 51 tests, build/format checks, both browser workflows and KPI export reconciliation. Dependency findings identified during installation were resolved by updating Vitest and csv-parse; npm audit then reported zero known vulnerabilities. Full evidence is in [VALIDATION.md](docs/VALIDATION.md).
 
 ## Final personal review and time report
 
@@ -52,6 +52,7 @@ The additional OpenAI-compatible adapter has mocked protocol and failure tests; 
 - Development tool: **Codex**.
 - Live application model: **qwen3:4b-instruct via Ollama**.
 - Independent walkthrough, including two KPI traces and a small code change: **in progress**.
-- Final archive validation and submission: **pending**.
+- Technical review and clean archive validation: **completed with Codex assistance on 8 November**.
+- Submission: **not sent**.
 
 Before submission I will confirm the final time estimate, review this account in my own words and record the remaining walkthrough results. This document does not claim completion of those steps.

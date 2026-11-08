@@ -34,14 +34,18 @@ At the candidate's request, the code was reorganized into explicit server layers
 
 ## Remaining steps
 
-| Order | Stage                          | Completion criterion                                                                                               |
-| ----- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| 8     | Candidate review — in progress | Personally walk through the UI, inspect evidence, trace two KPI counts and discuss the code.                       |
-| 9     | Review fixes, if needed        | Record findings, implement agreed corrections and run relevant regression checks.                                  |
-| 10    | Personal process documentation | Candidate signs off the first-person PROCESS.md and confirms the reported estimate of approximately 4 hours.       |
-| 11    | Final verification and archive | Run final checks against the reviewed commit and regenerate the archive.                                           |
-| 12    | Submission                     | Candidate decides when to submit under the assignment's agreed terms; record actual submission date after sending. |
+| Order | Stage                          | Completion criterion                                                                                                             |
+| ----- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| 8     | Candidate review — in progress | Personally walk through the UI, inspect evidence, trace two KPI counts and discuss the code.                                     |
+| 9     | Review fixes, if needed        | Record findings, implement agreed corrections and run relevant regression checks.                                                |
+| 10    | Personal process documentation | Candidate signs off the first-person PROCESS.md and confirms the reported estimate of approximately 4 hours.                     |
+| 11    | Final verification and archive | Completed 8 November: clean archive installation, 51 tests, two browser flows, KPI reconciliation and zero known audit findings. |
+| 12    | Submission                     | Candidate decides when to submit under the assignment's agreed terms; record actual submission date after sending.               |
 
 ## Dates that belong to the assignment data
 
 The reporting week is **4–8 October 2026**, as explicitly required by the supplied brief. CRM, inbound, decision and capture timestamps are synthetic scenario data, not development dates. They remain unchanged. Starting this implementation on 4 November does not itself reset an externally agreed submission deadline.
+
+## Final technical verification — 8 November 2026
+
+The full-stack changes were committed and packaged. Fresh archive installation identified dependency advisories; csv-parse and Vitest were updated, followed by successful regression, browser, report-export and dependency-audit checks. A technical walkthrough is recorded in [FINAL_REVIEW.md](FINAL_REVIEW.md). No submission message was sent.

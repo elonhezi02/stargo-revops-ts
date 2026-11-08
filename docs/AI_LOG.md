@@ -24,3 +24,7 @@ Earlier technical corrections included nullability in owner types, blank identit
 ## Evidence boundaries
 
 [VALIDATION.md](VALIDATION.md) records current results and separates earlier archive verification from checks on the current code. Automated execution does not replace the candidate's final independent walkthrough. Personal hours and submission status are tracked in PROCESS.md; they are not inferred from tool runtime or conversation duration.
+
+## Final packaging review — 8 November 2026
+
+Codex performed the technical walkthrough and clean archive verification at the candidate's request. Dependency findings from npm installation were resolved by updating csv-parse and Vitest, and all regression/browser checks passed again. PROCESS.md retains the candidate-reported estimate of approximately four hours and distinguishes assisted technical verification from independent personal review.

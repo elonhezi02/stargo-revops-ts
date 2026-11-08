@@ -5,6 +5,7 @@ A local RevOps application for evidence-based lead qualification, traceable week
 ## Documentation
 
 - [Architecture and extension points](docs/ARCHITECTURE.md): server layers, client features and dependency replacement.
+- [Final technical review](docs/FINAL_REVIEW.md): request flow, two reconciled KPI traces and live-session preparation.
 - [Review guide](docs/REVIEW.md): practical walkthrough and expected outcomes.
 - [Requirement coverage](docs/REQUIREMENTS.md): implementation and verification against the brief.
 - [Validation record](docs/VALIDATION.md): executed checks and their limits.

@@ -4,7 +4,7 @@ Latest checks: **8 November 2026**. Documentation reviewed: **8 November 2026**.
 
 ## Current verification status
 
-The current code passed **51 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Final archive regeneration and clean-install verification remain pending** after the latest refactor. The successful 4 November archive check below applies to that earlier artifact.
+The current code passed **51 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Clean archive installation was repeated successfully on 8 November** after the refactor and dependency updates (runtime revision `6e5344e`). The 4 November check below remains a historical baseline.
 
 ## Initial baseline — 4 November 2026
 
@@ -71,3 +71,9 @@ No exhaustive security audit, universal injection detector, general semantic cla
 ## Documentation verification — 8 November 2026
 
 All 10 project-owned Markdown files were reviewed for current module paths, run/configuration guidance, verification status and deliverables. Relative links and explicit code paths were checked. KPI_PACK.md matches a fresh in-memory seed export byte-for-byte after trimming trailing whitespace; its CRO note is 78 words. No review database was modified. PROCESS.md records the candidate-reported estimate of approximately 4 personal hours and retains final personal sign-off as an open step.
+
+## Final archive verification — 8 November 2026
+
+Runtime revision `6e5344e` was packaged with Git history, extracted into a fresh temporary directory and checked with `npm ci`, `npm run check`, `npm run test:e2e`, `npm run export:kpi` and `npm audit`. All 51 tests and both browser workflows passed. The exported KPI_PACK.md exactly matched the committed report. Installation findings were resolved with csv-parse 7.0.3 and Vitest 5.1.0; the resulting audit reported zero known vulnerabilities. This is the audit's result at verification time, not a guarantee of absence of all vulnerabilities.
+
+The final packaging pass adds this verification record without changing the tested application or lockfile. Archive contents are checked against the tested runtime files. Git history is included; .env, runtime databases, model weights and node_modules are excluded. Candidate personal sign-off and submission remain separate from this technical verification.
