@@ -178,6 +178,6 @@ No optional HubSpot sync, email integration, authentication, deployment or uploa
 ## Submission
 
 - `KPI_PACK.md` is generated from stored decisions, with a CRO note under 150 words.
-- [PROCESS.md](PROCESS.md) requires the candidate’s final first-person review notes and actual personal hours. [docs/AI_LOG.md](docs/AI_LOG.md) records implementation assistance.
+- [PROCESS.md](PROCESS.md) records the candidate-approved process account and approximately four personal hours. [docs/AI_LOG.md](docs/AI_LOG.md) records implementation assistance.
 - Commit reviewed work, then `npm run package` creates `../stargo-revops-ts-review.zip` including `.git` and excluding ignored runtime data, models, dependencies and `.env`.
 - Nothing is sent or published automatically. Reply to the original assignment email only after final review, with repository/archive, total personal hours and the model actually used. The source brief's deadline and no-undisclosed-post-submission-changes rule still apply.

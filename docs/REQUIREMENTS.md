@@ -34,13 +34,13 @@ Reviewed 8 November 2026 against the [supplied brief](../source/Stargo_RevOps_Ta
 | Architecture and extension guide            | [ARCHITECTURE.md](ARCHITECTURE.md)            | Updated for server layers, client features and provider configuration |
 | Repository and history                      | Git repository; npm run package includes .git | Committed and packaged; clean installation verified                   |
 | Setup, architecture, formulas and tradeoffs | [README.md](../README.md)                     | Documented                                                            |
-| Personal AI workflow and time               | [PROCESS.md](../PROCESS.md)                   | Approximately 4 hours reported; final personal sign-off pending       |
+| Personal AI workflow and time               | [PROCESS.md](../PROCESS.md)                   | Content approved 8 November; approximately 4 hours reported           |
 | Exported report and CRO note                | [KPI_PACK.md](../KPI_PACK.md)                 | Generated; CRO note below 150 words                                   |
 | Submission message                          | Original assignment email thread              | Not sent                                                              |
-| Live walkthrough without AI                 | Candidate preparation                         | In progress                                                           |
+| Live walkthrough without AI                 | Candidate preparation                         | Planned for interview stage                                           |
 
 Optional HubSpot sync, a labelled model benchmark and a screen recording are not required for completion and are not included. Manual review steps are in [REVIEW.md](REVIEW.md).
 
 ## Current verification scope
 
-The 8 November revision passed 55 unit/API/adapter tests, two browser workflows, TypeScript/build/format checks and a real Ollama smoke run. The additional local compatible adapter has mocked protocol coverage only. Clean archive installation was repeated successfully on 8 November after dependency updates. The independent walkthrough and final personal sign-off remain open. Approximately 4 hours have been reported in PROCESS.md.
+The 8 November revision passed 55 unit/API/adapter tests, two browser workflows, TypeScript/build/format checks and a real Ollama smoke run. The additional local compatible adapter has mocked protocol coverage only. Clean archive installation was repeated successfully on 8 November after dependency updates. The candidate approved the process account on 8 November. The independent code walkthrough is planned for a subsequent interview stage. Approximately 4 hours have been reported in PROCESS.md.

@@ -36,4 +36,4 @@ The main limitations remain conservative extraction coverage, constrained conten
 
 ## Personal preparation before the live session
 
-Read the traced modules and explain the score-versus-acceptance distinction, the two KPI traces and provider replacement without assistance. Practice a small presentation change and run its relevant check. Confirm that PROCESS.md expresses the work in your own words and that the approximately four-hour estimate remains accurate. These personal steps are separate from the completed automated review.
+Read the traced modules and explain the score-versus-acceptance distinction, the two KPI traces and provider replacement without assistance. Practice a small presentation change and run its relevant check. The candidate approved the PROCESS.md account and approximately four-hour estimate on 8 November. These personal steps are separate from the completed automated review.

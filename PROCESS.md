@@ -1,6 +1,6 @@
 # Engineering process
 
-Updated 8 November 2026. Working account prepared with editorial AI assistance; final personal sign-off remains to be completed before submission.
+Updated 8 November 2026. Account prepared with editorial AI assistance; the candidate approved its content on 8 November 2026.
 
 ## Objectives and technical direction
 
@@ -10,7 +10,7 @@ My main acceptance criteria were traceable qualification, an auditable reporting
 
 ## AI workflow and responsibilities
 
-I used Codex for implementation, refactoring, test execution and documentation assistance. I directed scope and technology selection, reviewed the interface and structure, and requested corrections when the implementation did not meet my expectations. The generated implementation and tests were checked through automated regression suites and a local-model smoke run. My final independent code walkthrough remains open.
+I used Codex for implementation, refactoring, test execution and documentation assistance. I directed scope and technology selection, reviewed the interface and structure, and requested corrections when the implementation did not meet my expectations. The generated implementation and tests were checked through automated regression suites and a local-model smoke run. An in-depth independent code walkthrough is planned for interview preparation if invited to the next stage.
 
 The following are translated excerpts from my actual Hebrew instructions, rather than reconstructed prompts:
 
@@ -61,8 +61,9 @@ The additional OpenAI-compatible adapter has mocked protocol and failure tests; 
 - Personal time spent: **approximately 4 hours**, as reported on 8 November 2026; this is an estimate, not an instrumented time log.
 - Development tool: **Codex**.
 - Live application model: **qwen3:4b-instruct via Ollama**.
-- Independent walkthrough, including two KPI traces and a small code change: **in progress**.
+- Process account: **content approved by the candidate on 8 November 2026**.
+- In-depth independent code walkthrough: **planned for interview preparation if invited to the next stage**.
 - Technical review and clean archive validation: **completed with Codex assistance on 8 November**.
 - Submission: **not sent**.
 
-Before submission I will confirm the final time estimate, review this account in my own words and record the remaining walkthrough results. This document does not claim completion of those steps.
+I approved this process account, including the reported time estimate. Deeper independent code practice is planned for the next interview stage; approval of this account does not represent completion of that practice.
