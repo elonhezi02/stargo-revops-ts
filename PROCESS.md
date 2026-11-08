@@ -52,7 +52,7 @@ Codex implemented these requested changes and ran the automated checks. My role 
 
 ## Verification evidence
 
-The latest automated run on 8 November passed **51 tests**, TypeScript/build/format checks and two browser workflows, including a 390 px viewport. A real `qwen3:4b-instruct` run covered positive and negative interest and a grounded 50-word brief; unsafe instructions and unsupported Arabic were routed to review before inference. These checks were executed with Codex assistance against isolated test databases.
+The latest automated run on 8 November passed **55 tests**, TypeScript/build/format checks and two browser workflows, including a 390 px viewport. A real `qwen3:4b-instruct` run covered positive and negative interest and a grounded 50-word brief; unsafe instructions and unsupported Arabic were routed to review before inference. These checks were executed with Codex assistance against isolated test databases.
 
 The additional OpenAI-compatible adapter has mocked protocol and failure tests; it has not been exercised against a second installed inference runtime. The 8 November archive passed clean installation, all 51 tests, build/format checks, both browser workflows and KPI export reconciliation. Dependency findings identified during installation were resolved by updating Vitest and csv-parse; npm audit then reported zero known vulnerabilities. Full evidence is in [VALIDATION.md](docs/VALIDATION.md).
 

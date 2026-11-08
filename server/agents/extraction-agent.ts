@@ -56,7 +56,8 @@ export function rules(body: string): Signal {
   for (const [pattern, value] of [
     [/\b(Haifa|Israel|Tel Aviv)\b|ישראל|חיפה/i, "Israel"],
     [/\bSingapore\b/i, "Singapore"],
-    [/\b(United States|USA|US)\b/i, "United States"],
+    [/\b(United States|USA)\b/i, "United States"],
+    [/\bUS\b/, "United States"],
     [/\b(UK|United Kingdom|London)\b/i, "UK"],
     [/\b(Germany|DACH)\b/i, "DACH"],
     [/\b(Netherlands|Belgium|Benelux)\b/i, "Benelux"],

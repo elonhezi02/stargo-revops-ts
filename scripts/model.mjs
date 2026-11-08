@@ -4,7 +4,8 @@ import { resolve } from "node:path";
 import "dotenv/config";
 const command = process.argv[2];
 if (!["serve", "pull"].includes(command)) throw new Error("Use serve or pull");
-const model = process.env.OLLAMA_MODEL ?? "qwen3:4b-instruct";
+const model =
+  process.env.LLM_MODEL ?? process.env.OLLAMA_MODEL ?? "qwen3:4b-instruct";
 const models = resolve("runtime/models");
 mkdirSync(models, { recursive: true });
 const result = spawnSync(

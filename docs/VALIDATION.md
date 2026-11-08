@@ -4,7 +4,7 @@ Latest checks: **8 November 2026**. Documentation reviewed: **8 November 2026**.
 
 ## Current verification status
 
-The current code passed **51 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Clean archive installation was repeated successfully on 8 November** after the refactor and dependency updates (runtime revision `6e5344e`). The 4 November check below remains a historical baseline.
+The current code passed **55 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Clean archive installation was repeated successfully on 8 November** after the refactor and dependency updates (runtime revision `6e5344e`). The 4 November check below remains a historical baseline.
 
 ## Initial baseline — 4 November 2026
 
@@ -77,3 +77,11 @@ All 10 project-owned Markdown files were reviewed for current module paths, run/
 Runtime revision `6e5344e` was packaged with Git history, extracted into a fresh temporary directory and checked with `npm ci`, `npm run check`, `npm run test:e2e`, `npm run export:kpi` and `npm audit`. All 51 tests and both browser workflows passed. The exported KPI_PACK.md exactly matched the committed report. Installation findings were resolved with csv-parse 7.0.3 and Vitest 5.1.0; the resulting audit reported zero known vulnerabilities. This is the audit's result at verification time, not a guarantee of absence of all vulnerabilities.
 
 The final packaging pass adds this verification record without changing the tested application or lockfile. Archive contents are checked against the tested runtime files. Git history is included; .env, runtime databases, model weights and node_modules are excluded. Candidate personal sign-off and submission remain separate from this technical verification.
+
+## Post-refactor cleanup and requirement audit — 8 November 2026
+
+The final source audit compared the implementation with the supplied brief, QL standard and brand content contract. TypeScript's unused-local/parameter checks passed. An import-graph scan from application, test and script entry points found no unreachable source modules, and every production dependency had a source import. Internal-only schemas, content planning values and report boundaries were made private to their modules.
+
+Two issues were corrected: the model download helper now respects LLM_MODEL before the legacy OLLAMA_MODEL alias, and lowercase English “us” no longer creates a United States company fact. Four regression cases cover the ambiguous pronoun and explicit US/USA/United States evidence. A fake CLI check confirmed helper configuration precedence without downloading a model.
+
+The updated suite passed 55 tests, build/format checks and both browser flows. npm audit reported zero known vulnerabilities. Existing rule/language limitations remain documented; this audit is not a claim of universal semantic extraction accuracy. The original source pack and review database were not modified.

@@ -7,7 +7,7 @@ export const Sources = [
   "warm-network",
   "organic/referral",
 ] as const;
-export const Timestamp = z.string().datetime({ offset: true });
+const Timestamp = z.string().datetime({ offset: true });
 const NullableText = z.string().nullable();
 export const InboundSchema = z
   .object({
@@ -31,10 +31,10 @@ export const InboundSchema = z
   })
   .strict();
 export type Inbound = z.infer<typeof InboundSchema>;
-export const Fact = z
+const Fact = z
   .object({ value: z.string().min(1), evidence: z.string().min(1).max(1500) })
   .strict();
-export const EmployeeFact = z
+const EmployeeFact = z
   .object({
     value: z.number().int().nonnegative(),
     evidence: z.string().min(1).max(1500),
@@ -113,7 +113,7 @@ export type Analysis = {
   signal: Signal | null;
   error: string | null;
 };
-export const CheckSchema = z.object({
+const CheckSchema = z.object({
   name: z.string(),
   result: z.enum(["pass", "fail", "unknown"]),
   evidence: z.array(z.string()),

@@ -28,3 +28,7 @@ Earlier technical corrections included nullability in owner types, blank identit
 ## Final packaging review — 8 November 2026
 
 Codex performed the technical walkthrough and clean archive verification at the candidate's request. Dependency findings from npm installation were resolved by updating csv-parse and Vitest, and all regression/browser checks passed again. PROCESS.md retains the candidate-reported estimate of approximately four hours and distinguishes assisted technical verification from independent personal review.
+
+## Final cleanup audit — 8 November 2026
+
+At the candidate's request, Codex checked reachability, unused declarations, production dependencies and requirement coverage. Internal-only exports were narrowed. Two concrete findings were fixed: legacy-only model-helper configuration and ambiguous lowercase “us” country extraction. The regression suite increased to 55 passing tests.

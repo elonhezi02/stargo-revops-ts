@@ -43,4 +43,4 @@ Optional HubSpot sync, a labelled model benchmark and a screen recording are not
 
 ## Current verification scope
 
-The 8 November revision passed 51 unit/API/adapter tests, two browser workflows, TypeScript/build/format checks and a real Ollama smoke run. The additional local compatible adapter has mocked protocol coverage only. Clean archive installation was repeated successfully on 8 November after dependency updates. The independent walkthrough and final personal sign-off remain open. Approximately 4 hours have been reported in PROCESS.md.
+The 8 November revision passed 55 unit/API/adapter tests, two browser workflows, TypeScript/build/format checks and a real Ollama smoke run. The additional local compatible adapter has mocked protocol coverage only. Clean archive installation was repeated successfully on 8 November after dependency updates. The independent walkthrough and final personal sign-off remain open. Approximately 4 hours have been reported in PROCESS.md.

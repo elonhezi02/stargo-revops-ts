@@ -2,7 +2,7 @@ import { z } from "zod";
 import { unavailableModel, type Generator } from "../ports/model.js";
 import { briefPrompt } from "./prompts/content-brief.js";
 import type { Brief, Gap } from "../../shared/contracts.js";
-export const claims = {
+const claims = {
   position: {
     source_id: "BC-1",
     text: "Stargo builds agentic AI that turns messy enterprise documents, emails and datasets into trusted operational transactions across freight, logistics and trade finance.",
@@ -90,7 +90,7 @@ const planObject = z
     schema_type: z.literal("Article"),
   })
   .strict();
-export const Plan = planObject.superRefine((p, ctx) => {
+const Plan = planObject.superRefine((p, ctx) => {
   const count = p.direct_answer
     .map((id) => claims[id].text)
     .join(" ")

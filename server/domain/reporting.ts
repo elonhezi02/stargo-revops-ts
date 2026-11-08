@@ -13,10 +13,10 @@ import {
   decisionAt,
   parts,
 } from "./qualification.js";
-export const START = DateTime.fromISO("2026-10-04", { zone: "Asia/Jerusalem" })
+const START = DateTime.fromISO("2026-10-04", { zone: "Asia/Jerusalem" })
   .startOf("day")
   .toMillis();
-export const END = DateTime.fromISO("2026-10-09", { zone: "Asia/Jerusalem" })
+const END = DateTime.fromISO("2026-10-09", { zone: "Asia/Jerusalem" })
   .startOf("day")
   .toMillis();
 export const inWeek = (v: string) => instant(v) >= START && instant(v) < END;

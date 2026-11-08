@@ -292,3 +292,26 @@ it("accepts blank identity and source as missing, not malformed", async () => {
   expect(s.contacts.find((c) => c.id === id)?.email).toBeNull();
   expect(s.messages.at(-1)?.source).toBeNull();
 });
+
+it("does not infer a country from the pronoun us", async () => {
+  const body =
+    "I own a 45-person customs brokerage. We handle import declarations manually. Please show us a demo.";
+  expect(rules(body).company_region).toBeNull();
+  const id = await ingest(s, { ...sample, body });
+  const result = qualify(
+    s,
+    s.contacts.find((c) => c.id === id)!,
+  );
+  expect(result.checks.find((c) => c.name === "Company fit")?.result).toBe(
+    "unknown",
+  );
+  expect(result.status).toBe("nurture");
+});
+it.each(["US", "USA", "United States"])(
+  "retains explicit country evidence: %s",
+  (country) => {
+    expect(
+      rules(`Our company is in the ${country}.`).company_region?.value,
+    ).toBe("United States");
+  },
+);
