@@ -9,7 +9,7 @@ A local RevOps application for evidence-based lead qualification, traceable week
 - [Review guide](docs/REVIEW.md): practical walkthrough and expected outcomes.
 - [Requirement coverage](docs/REQUIREMENTS.md): implementation and verification against the brief.
 - [Validation record](docs/VALIDATION.md): executed checks and their limits.
-- [Engineering process](PROCESS.md): candidate decisions and personal review draft.
+- [Engineering process](PROCESS.md): technology decisions, concrete review interventions, AI collaboration and personal review status.
 - [Implementation plan](docs/PLAN.md), [timeline](docs/TIMELINE.md) and [AI activity record](docs/AI_LOG.md): supporting development records.
 
 This implementation began on 4 November 2026. Documentation was reviewed on 8 November. October timestamps belong to the assignment’s reporting scenario.

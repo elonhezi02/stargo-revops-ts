@@ -24,13 +24,23 @@ The following are translated excerpts from my actual Hebrew instructions, rather
 
 I allowed implementation work to proceed within the agreed scope, then used review findings to steer the next iteration. The architecture required a second pass: extracting functions alone did not provide the folder structure and discoverability I wanted. I requested explicit layer boundaries and a feature-based client organization rather than accepting the first refactor as complete.
 
-## Review findings and corrections
+## Where my review changed the implementation
 
-During the UI review I identified the `0/0` display for sales acceptance as misleading: it suggested unfinished automated analysis. The revised interface distinguishes four scored checks from a separate human sales decision. Approval remains required for QL status but adds no points.
+My contribution included identifying gaps in the generated result and setting concrete requirements for the next iteration. The following changes came directly from my review:
 
-I also challenged the use of rules mode when my intended technical demonstration was local inference. Ollama is now the exercised local model, while the clearly labelled rules fallback remains available because the assignment requires end-to-end operation without a key. Stored seed analyses keep their original mode; changing configuration does not rewrite history.
+| What I observed                                                                                 | My intervention                                                                                | Effect on the delivered project                                                                                      |
+| ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| The technology choices needed to align with my previous assignment while satisfying this brief. | I required a comparison and plan before approving the TypeScript direction.                    | A consistent React/TypeScript/Express stack in an independent repository.                                            |
+| The application was demonstrating rules-based extraction when I wanted local model inference.   | I explicitly requested Ollama and asked when the model was actually invoked.                   | Real local inference for new inbound, reanalysis and content planning, with the required labelled fallback retained. |
+| Sales acceptance displayed `0/0`, making it look like incomplete agent analysis.                | I identified the ambiguity and requested a display correction.                                 | A distinct human-decision section, separate from the four scored automated checks.                                   |
+| Prompt instructions were embedded in model calls.                                               | I requested a dedicated prompt area consistent with the previous project.                      | Readable, versioned prompt files separate from provider transport.                                                   |
+| The initial refactor still left a flat server structure and a large client component.           | I requested explicit controller/service/database boundaries, DI and client decomposition.      | Layered server folders, neutral dependency contracts and feature-based React components.                             |
+| Replacing a model should not require changes across business logic.                             | I used provider replacement through external settings as a concrete extensibility requirement. | A provider factory, model adapters and configuration for provider, model and local endpoint.                         |
+| Documentation contained inconsistent language and no longer matched the code.                   | I requested an English documentation audit against the assignment and final architecture.      | Updated architecture, requirement coverage, configuration guidance and validation records.                           |
 
-For maintainability, I requested dedicated prompt files, constructor/function injection, HTTP controllers and services, a repository contract and provider adapters. In the client, the large entry component was split into lead, reporting and visibility features. These changes retain the API contract and stored-state format.
+The first architecture revision did not resolve the navigation problem I had raised. I asked for another pass with visible folder boundaries and smaller client components. That review changed the organization of the delivered code, rather than only its description.
+
+Codex implemented these requested changes and ran the automated checks. My role in these iterations was technical direction, product review and correction of the generated result. The documented interventions are review decisions; they are not a claim that I manually authored every resulting code change.
 
 ## Design decisions and tradeoffs
 

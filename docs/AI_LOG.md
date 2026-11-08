@@ -6,7 +6,7 @@ Updated 8 November 2026. This record complements the first-person account in [PR
 
 The candidate directed technology alignment, local-model selection, interface corrections and architectural review. Codex assisted with implementation, refactoring, automated tests and documentation. The scope included shared schemas, identity normalization, extraction validation, qualification, reporting, persistence, HTTP endpoints and the React interface.
 
-Actual instruction excerpts, translated from Hebrew, are recorded in PROCESS.md. The table below distinguishes review decisions from implementation and verification rather than treating generated output as independently reviewed work.
+Actual instruction excerpts, translated from Hebrew, and an observation/intervention/outcome table are recorded in [PROCESS.md](../PROCESS.md#where-my-review-changed-the-implementation). The table below distinguishes review decisions from implementation and verification rather than treating generated output as independently reviewed work.
 
 ## Iterations and evidence
 

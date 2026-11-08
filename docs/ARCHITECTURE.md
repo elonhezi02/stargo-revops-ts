@@ -94,3 +94,7 @@ shared/                   Validated API/domain contracts
 Controllers do not open databases or call model transports. Agents depend on the model port, not a provider SDK. Services depend on the repository contract, not SQLite. The composition root owns the production adapters. Keeping the public API unchanged allows the client and server internals to evolve separately.
 
 The current service remains one cohesive workspace use case facade; splitting every endpoint into a one-method class would add indirection without improving this application's boundaries. Domain rules remain explicit, tested code rather than an unrestricted runtime rules engine.
+
+## Review-driven architectural changes
+
+The final structure reflects specific candidate review feedback: isolate prompts, expose controller/service/database boundaries, inject dependencies, make model replacement configurable and split the large client component. An initial extraction of functions was followed by a second structural pass because flat modules still obscured responsibilities. [PROCESS.md](../PROCESS.md#where-my-review-changed-the-implementation) records the observations, requested changes and resulting behavior.
