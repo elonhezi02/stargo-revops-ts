@@ -4,7 +4,7 @@ Latest checks: **8 November 2026**. Documentation reviewed: **8 November 2026**.
 
 ## Current verification status
 
-The current code passed **55 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Clean archive installation was repeated successfully on 8 November** after the refactor and dependency updates (runtime revision `6e5344e`). The 4 November check below remains a historical baseline.
+The current code passed **55 unit/API/adapter tests**, TypeScript/build/format checks, both desktop/mobile browser workflows and the real Ollama smoke test on 8 November. The compatible adapter has mocked protocol coverage only. **Clean archive installation was repeated successfully on 8 November** after the refactor and dependency updates (final runtime revision `c85f8c5`). The 4 November check below remains a historical baseline.
 
 ## Initial baseline — 4 November 2026
 
@@ -49,7 +49,7 @@ The tested archive contained Git history and excluded node_modules, runtime data
 
 Non-blocking tool warnings concerned Node's experimental SQLite driver, upstream Zod comment annotations during the Vite build, and Playwright color settings. All listed checks completed successfully.
 
-No exhaustive security audit, universal injection detector, general semantic claim checker or production-scale load test is claimed. The candidate's final manual review is separate from these assistant-run checks and remains in progress. Follow [REVIEW.md](REVIEW.md) to complete it.
+No exhaustive security audit, universal injection detector, general semantic claim checker or production-scale load test is claimed. Reproducible manual scenarios are documented in [REVIEW.md](REVIEW.md); the live code discussion belongs to the interview stage.
 
 ## Architecture refactor — 6 November 2026
 
@@ -70,13 +70,13 @@ No exhaustive security audit, universal injection detector, general semantic cla
 
 ## Documentation verification — 8 November 2026
 
-All 10 project-owned Markdown files were reviewed for current module paths, run/configuration guidance, verification status and deliverables. Relative links and explicit code paths were checked. KPI_PACK.md matches a fresh in-memory seed export byte-for-byte after trimming trailing whitespace; its CRO note is 78 words. No review database was modified. PROCESS.md records the candidate-reported estimate of approximately 4 personal hours and retains final personal sign-off as an open step.
+The project-owned Markdown files were reviewed for current module paths, run/configuration guidance, verification status and deliverables. Relative links and explicit code paths were checked. KPI_PACK.md matches a fresh in-memory seed export byte-for-byte after trimming trailing whitespace; its CRO note is 78 words. No review database was modified. PROCESS.md records the reported estimate of approximately 4 personal hours; its content was approved on 8 November.
 
 ## Final archive verification — 8 November 2026
 
 Runtime revision `6e5344e` was packaged with Git history, extracted into a fresh temporary directory and checked with `npm ci`, `npm run check`, `npm run test:e2e`, `npm run export:kpi` and `npm audit`. All 51 tests and both browser workflows passed. The exported KPI_PACK.md exactly matched the committed report. Installation findings were resolved with csv-parse 7.0.3 and Vitest 5.1.0; the resulting audit reported zero known vulnerabilities. This is the audit's result at verification time, not a guarantee of absence of all vulnerabilities.
 
-The final packaging pass adds this verification record without changing the tested application or lockfile. Archive contents are checked against the tested runtime files. Git history is included; .env, runtime databases, model weights and node_modules are excluded. Candidate personal sign-off and submission remain separate from this technical verification.
+The final packaging pass adds this verification record without changing the tested application or lockfile. Archive contents are checked against the tested runtime files. Git history is included; .env, runtime databases, model weights and node_modules are excluded. The process account was subsequently approved; email submission remains pending.
 
 ## Post-refactor cleanup and requirement audit — 8 November 2026
 

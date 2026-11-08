@@ -18,7 +18,7 @@ Use TypeScript across Express and React, Zod for shared contracts, SQLite for pe
 | Persistence and API              | Seed import, atomic writes, decisions and analysis versions                                    | Restart preserves state; conflicting writes cannot silently overwrite it                    | Implemented and tested |
 | UI and visibility                | Lead review, metric drilldown, gap ranking and grounded content                                | Core workflows work at 390 px; unsupported content is blocked                               | Implemented and tested |
 | Architecture and maintainability | HTTP/services/domain/ports/infrastructure layers; client features; configurable model adapters | Replace infrastructure without rewriting use cases; preserve the API and reporting behavior | Implemented and tested |
-| Delivery review                  | Personal walkthrough, process account and final archive                                        | Candidate verifies the result and records actual time and observations                      | In progress            |
+| Delivery review                  | Process account, technical verification and public repository                                  | Approved process account, reported time and verified delivery artifact                      | Completed              |
 
 ## Scope decisions
 

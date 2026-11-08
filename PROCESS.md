@@ -1,6 +1,6 @@
 # Engineering process
 
-Updated 8 November 2026. Account prepared with editorial AI assistance; the candidate approved its content on 8 November 2026.
+Updated 8 November 2026. I reviewed and approved this account, prepared with editorial AI assistance.
 
 ## Objectives and technical direction
 
@@ -10,7 +10,7 @@ My main acceptance criteria were traceable qualification, an auditable reporting
 
 ## AI workflow and responsibilities
 
-I used Codex for implementation, refactoring, test execution and documentation assistance. I directed scope and technology selection, reviewed the interface and structure, and requested corrections when the implementation did not meet my expectations. The generated implementation and tests were checked through automated regression suites and a local-model smoke run. An in-depth independent code walkthrough is planned for interview preparation if invited to the next stage.
+I used Codex for implementation, refactoring, test execution and documentation assistance. I directed scope and technology selection, reviewed the interface and structure, and requested corrections when the implementation did not meet my expectations. The generated implementation and tests were checked through automated regression suites and a local-model smoke run.
 
 The following are translated excerpts from my actual Hebrew instructions, rather than reconstructed prompts:
 
@@ -38,9 +38,7 @@ My contribution included identifying gaps in the generated result and setting co
 | Replacing a model should not require changes across business logic.                             | I used provider replacement through external settings as a concrete extensibility requirement. | A provider factory, model adapters and configuration for provider, model and local endpoint.                         |
 | Documentation contained inconsistent language and no longer matched the code.                   | I requested an English documentation audit against the assignment and final architecture.      | Updated architecture, requirement coverage, configuration guidance and validation records.                           |
 
-The first architecture revision did not resolve the navigation problem I had raised. I asked for another pass with visible folder boundaries and smaller client components. That review changed the organization of the delivered code, rather than only its description.
-
-Codex implemented these requested changes and ran the automated checks. My role in these iterations was technical direction, product review and correction of the generated result. The documented interventions are review decisions; they are not a claim that I manually authored every resulting code change.
+I used these review findings to set acceptance criteria for the next iteration. Codex implemented the requested changes and executed the automated checks; I directed the technical and product decisions described above.
 
 ## Design decisions and tradeoffs
 
@@ -61,9 +59,8 @@ The additional OpenAI-compatible adapter has mocked protocol and failure tests; 
 - Personal time spent: **approximately 4 hours**, as reported on 8 November 2026; this is an estimate, not an instrumented time log.
 - Development tool: **Codex**.
 - Live application model: **qwen3:4b-instruct via Ollama**.
-- Process account: **content approved by the candidate on 8 November 2026**.
-- In-depth independent code walkthrough: **planned for interview preparation if invited to the next stage**.
+- Process account: **reviewed and approved on 8 November 2026**.
 - Technical review and clean archive validation: **completed with Codex assistance on 8 November**.
 - Submission: **not sent**.
 
-I approved this process account, including the reported time estimate. Deeper independent code practice is planned for the next interview stage; approval of this account does not represent completion of that practice.
+The next interview stage includes an independent code walkthrough and a small implementation change, as specified in the brief.

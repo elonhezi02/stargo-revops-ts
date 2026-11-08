@@ -32,7 +32,7 @@ Reviewed 8 November 2026 against the [supplied brief](../source/Stargo_RevOps_Ta
 | Deliverable                                 | Location                                      | Status                                                                |
 | ------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------- |
 | Architecture and extension guide            | [ARCHITECTURE.md](ARCHITECTURE.md)            | Updated for server layers, client features and provider configuration |
-| Repository and history                      | Git repository; npm run package includes .git | Committed and packaged; clean installation verified                   |
+| Repository and history                      | Git repository; npm run package includes .git | Public GitHub repository; clean installation verified                 |
 | Setup, architecture, formulas and tradeoffs | [README.md](../README.md)                     | Documented                                                            |
 | Personal AI workflow and time               | [PROCESS.md](../PROCESS.md)                   | Content approved 8 November; approximately 4 hours reported           |
 | Exported report and CRO note                | [KPI_PACK.md](../KPI_PACK.md)                 | Generated; CRO note below 150 words                                   |

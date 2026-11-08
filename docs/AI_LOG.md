@@ -6,7 +6,7 @@ Updated 8 November 2026. This record complements the first-person account in [PR
 
 The candidate directed technology alignment, local-model selection, interface corrections and architectural review. Codex assisted with implementation, refactoring, automated tests and documentation. The scope included shared schemas, identity normalization, extraction validation, qualification, reporting, persistence, HTTP endpoints and the React interface.
 
-Actual instruction excerpts, translated from Hebrew, and an observation/intervention/outcome table are recorded in [PROCESS.md](../PROCESS.md#where-my-review-changed-the-implementation). The table below distinguishes review decisions from implementation and verification rather than treating generated output as independently reviewed work.
+Actual instruction excerpts, translated from Hebrew, and an observation/intervention/outcome table are recorded in [PROCESS.md](../PROCESS.md#where-my-review-changed-the-implementation). The table below links review decisions to implementation changes and verification evidence.
 
 ## Iterations and evidence
 
@@ -23,11 +23,11 @@ Earlier technical corrections included nullability in owner types, blank identit
 
 ## Evidence boundaries
 
-[VALIDATION.md](VALIDATION.md) records current results and separates earlier archive verification from checks on the current code. Automated execution does not replace the candidate's final independent walkthrough. Personal hours and submission status are tracked in PROCESS.md; they are not inferred from tool runtime or conversation duration.
+[VALIDATION.md](VALIDATION.md) records current results and separates earlier archive verification from checks on the current code. Personal hours, approved process notes and submission status are tracked in PROCESS.md. The live code discussion is a separate interview stage.
 
 ## Final packaging review — 8 November 2026
 
-Codex performed the technical walkthrough and clean archive verification at the candidate's request. Dependency findings from npm installation were resolved by updating csv-parse and Vitest, and all regression/browser checks passed again. PROCESS.md retains the candidate-reported estimate of approximately four hours and distinguishes assisted technical verification from independent personal review.
+Codex performed the technical walkthrough and clean archive verification at the candidate's request. Dependency findings from npm installation were resolved by updating csv-parse and Vitest, and all regression/browser checks passed again. PROCESS.md records the approved workflow account and the reported estimate of approximately four hours.
 
 ## Final cleanup audit — 8 November 2026
 

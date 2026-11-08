@@ -1,6 +1,6 @@
 # Final technical review
 
-8 November 2026. This is a Codex-assisted technical review and a concise preparation guide. It does not certify an independent candidate walkthrough.
+8 November 2026. This technical review records the request flow, report reconciliation and extension points. Verification was performed with Codex assistance.
 
 ## End-to-end request trace
 

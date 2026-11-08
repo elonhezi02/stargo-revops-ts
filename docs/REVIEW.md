@@ -1,6 +1,6 @@
 # Review guide
 
-Updated 8 November 2026. This guide describes the final manual review; it is not a record of completed candidate testing. Recorded automated results are in [VALIDATION.md](VALIDATION.md).
+Updated 8 November 2026. This guide provides reproducible review scenarios and expected outcomes. Recorded automated results are in [VALIDATION.md](VALIDATION.md).
 
 ## Prepare an isolated workspace
 
@@ -86,7 +86,7 @@ npm run export:kpi
 
 The export reflects the configured database. Decide deliberately whether the delivered report represents clean source data or documented review corrections; do not accidentally export experimental decisions.
 
-Complete the personal review notes and time report in [PROCESS.md](../PROCESS.md), then commit the reviewed state and run `npm run package`. The archive includes Git history. No email is sent by this command.
+The approved process account and time estimate are recorded in [PROCESS.md](../PROCESS.md). The public repository is the submission artifact; `npm run package` provides an optional archive with Git history. No email is sent by this command.
 
 For the live code discussion, be ready to explain the two-agent boundary, identity matching, the five-condition gate, report cutoff, model failure behavior and constrained claims. Practice one small code change without AI assistance.
 
@@ -94,6 +94,6 @@ For the live code discussion, be ready to explain the two-agent boundary, identi
 
 Trace one inbound request through `server/http/routes.ts`, `controllers/workspace-controller.ts`, `services/workspace-service.ts`, `services/ingestion-service.ts` and the extraction agent. Explain how the repository update commits an analysis and recomputes the report. Then inspect `domain/qualification.ts` to distinguish score from the five-condition gate.
 
-In `server/composition.ts`, identify the injected model, prompts and repository. Explain how `LLM_PROVIDER`, `LLM_MODEL` and `LLM_ENDPOINT` select an existing adapter, and where a new protocol adapter would be registered. Do not claim live validation of the compatible provider; only Ollama has been exercised against a real runtime.
+In `server/composition.ts`, identify the injected model, prompts and repository. Explain how `LLM_PROVIDER`, `LLM_MODEL` and `LLM_ENDPOINT` select an existing adapter, and where a new protocol adapter would be registered. Ollama has live runtime validation; the compatible adapter has mocked protocol coverage.
 
 In the client, follow `App.tsx` to a feature component, `hooks/useWorkspace.ts` and `api/workspace.ts`. Explain which state belongs to a feature and which belongs to workspace loading/mutations.
